@@ -1,0 +1,202 @@
+:root {
+  --color-blue: #173b8f;
+  --color-blue-dark: #102b6f;
+  --color-light-blue: #dceefa;
+  --color-white: #ffffff;
+  --color-text: #111827;
+
+  --font-title: "Montserrat Alternates", sans-serif;
+  --font-main: "Be Vietnam Pro", sans-serif;
+
+  --button-radius: 999rem;
+}
+
+/* basis */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  color: var(--color-text);
+  background: var(--color-white);
+}
+
+/* header */
+.header {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 10;
+
+  background-image: url("images/header-back.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 110% auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  padding: 2rem 6vw;
+}
+
+.logo {
+  width: clamp(8rem, 13vw, 12rem);
+  height: auto;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+}
+
+.nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.9rem 1.8rem;
+  border-radius: var(--button-radius);
+
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--color-blue);
+
+  border: 0.25rem solid rgba(255, 255, 255, 0.85);
+  box-shadow:
+    0 0 0 0.08rem rgba(255, 255, 255, 0.45),
+    inset 0 0.08rem 0.2rem rgba(255, 255, 255, 0.25);
+
+  text-decoration: none;
+  font-weight: 800;
+}
+
+.nav .cta-button {
+  background: var(--color-blue);
+  color: var(--color-white);
+}
+
+/* eerste section */
+.gedaanVisie {
+  position: relative;
+  min-height: 48rem;
+
+  padding: 10rem 10vw 5rem;
+
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.55)),
+    url("images/landings-1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+
+  overflow: hidden;
+}
+
+.gedaanVisie > p,
+.gedaanVisie > h1 {
+  margin: 0;
+  margin-left: 8vw;
+
+  color: var(--color-blue);
+  font-family: var(--font-title);
+  font-style: italic;
+}
+
+.gedaanVisie > p {
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.gedaanVisie > h1 {
+  font-size: 1.8rem;
+  font-weight: 900;
+}
+
+/* wolkenrij */
+.kennisWolken {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  gap: 3rem;
+  margin-top: 4rem;
+}
+
+.kennisWolk {
+  width: clamp(14rem, 20vw, 21rem);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+  color: var(--color-blue);
+}
+
+.wolk-tekst {
+  position: relative;
+  z-index: 2;
+
+  width: 120%;
+  min-height: 8rem;
+  margin-bottom: -3rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-image: url("images/real-cloud-2-wit.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.wolk-tekst p {
+  margin: 0;
+  font-family: var(--font-main);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.groter-tekst-in-de-wolk {
+  font-family: var(--font-title);
+  font-size: clamp(2.2rem, 3vw, 3.4rem);
+  font-weight: 900;
+  font-style: italic;
+  text-shadow: 0.08em 0.08em 0 rgba(23, 59, 143, 0.18);
+}
+
+.kennisWolk img {
+  width: 100%;
+  display: block;
+}
+
+/* product button */
+.gedaanVisie > a {
+  position: absolute;
+  right: 12vw;
+  bottom: 3.5rem;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.9rem 1.8rem;
+  border-radius: var(--button-radius);
+
+  background: var(--color-blue);
+  color: var(--color-white);
+
+  border: 0.25rem solid rgba(255, 255, 255, 0.85);
+  box-shadow:
+    0 0 0 0.08rem rgba(255, 255, 255, 0.45),
+    inset 0 0.08rem 0.2rem rgba(255, 255, 255, 0.25);
+
+  font-family: var(--font-main);
+  font-weight: 800;
+  text-decoration: none;
+}
