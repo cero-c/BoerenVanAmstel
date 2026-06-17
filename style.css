@@ -1,0 +1,473 @@
+/* ========================================== */
+/* BASIS LAYOUT INSTELLINGEN                  */
+/* ========================================== */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #1f3f8f;
+    background-color: #ffffff;
+}
+
+/* De overkoepelende flow container voor perfecte centrering */
+.main-content-flow {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 20px 4% 60px;
+    box-sizing: border-box;
+}
+
+/* ========================================== */
+/* SCHERM 1: LANDING INTERFACE                */
+/* ========================================== */
+.hero {
+    text-align: center;
+    padding: 30px 20px 15px;
+}
+
+.hero h1 {
+    color: #1f3f8f;
+    font-size: 2.2rem;
+    font-style: italic;
+    font-weight: 800;
+}
+
+.intro {
+    text-align: center;
+    max-width: 750px;
+    margin: auto;
+    padding: 0 20px 35px;
+}
+
+.intro h2 {
+    font-size: 1.4rem;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.intro p {
+    color: #444444;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.maatregelen {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 10px 0 30px;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 310px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card h3 {
+    font-size: 1.25rem;
+    font-style: italic;
+    margin-bottom: 8px;
+}
+
+.card p {
+    color: #444444;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+/* De organische fotovormen */
+.image-shape {
+    width: 200px;
+    height: 220px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 42% 58% 43% 57% / 30% 45% 55% 70%;
+    box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.9);
+}
+
+.image-shape img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.doneren-links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    padding: 30px 0;
+}
+
+.btn-flow-action {
+    text-decoration: none;
+    background: #1f3f8f;
+    color: white;
+    padding: 14px 32px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 10px rgba(31, 63, 143, 0.15);
+    transition: background-color 0.2s;
+}
+
+.btn-flow-action:hover {
+    background: #142a63;
+}
+
+/* ========================================== */
+/* GELIJKE ELEMENTEN VOOR SCHERM 2 & 3        */
+/* ========================================== */
+.flow-title {
+    color: #1f3f8f;
+    font-size: 2rem;
+    font-style: italic;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+/* Cruciaal: Vaste zones zodat de witte kaart niet verschuift */
+.promo-header-zone {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: 120px; /* Forceert gelijke hoogte op beide pagina's */
+    padding-left: 45px;
+    box-sizing: border-box;
+}
+
+.promo-milk-pic {
+    height: 110px;
+    width: auto;
+    object-fit: contain;
+}
+
+.promo-text-bubble {
+    color: #1f3f8f;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 1.05rem;
+}
+
+/* De Witte Kaart (Exact identiek) */
+.base-flow-card {
+    background: #ffffff;
+    border-radius: 70px;
+    padding: 50px 70px;
+    box-shadow: 0 10px 35px rgba(31, 63, 143, 0.06);
+    border: 1px solid #eef2f7;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.flow-label {
+    display: block;
+    color: #1f3f8f;
+    font-weight: bold;
+    font-style: italic;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+/* Keuze Knoppen Particulier / Bedrijf */
+.toggle-switch-container {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.btn-toggle {
+    border: 2px solid #1f3f8f;
+    background: transparent;
+    color: #1f3f8f;
+    padding: 8px 24px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.btn-toggle.active {
+    background: #1f3f8f;
+    color: white;
+}
+
+/* Blauwe Frequentiebalk */
+.time-frequency-bar {
+    display: flex;
+    background: #1f3f8f;
+    border-radius: 30px;
+    padding: 5px;
+    margin-bottom: 35px;
+    max-width: 480px;
+}
+
+.btn-time {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: white;
+    padding: 12px;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.btn-time.active {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* Grid splitsingen (Vast 2 kolommen) */
+.form-grid-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.input-fields-margin {
+    margin-top: 30px;
+    row-gap: 20px;
+}
+
+.input-element-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-element-cell label {
+    color: #333333;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* Input Styles */
+.flow-field-input {
+    width: 100%;
+    background: #f0f2f5;
+    border: 1px solid #e2e8f0;
+    padding: 14px 20px;
+    border-radius: 20px;
+    font-size: 1rem;
+    color: #333333;
+    outline: none;
+    box-sizing: border-box;
+}
+
+select.flow-field-input {
+    cursor: pointer;
+}
+
+.currency-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.currency-sign {
+    position: absolute;
+    left: 20px;
+    color: #555555;
+    font-weight: bold;
+}
+
+.currency-input-wrapper input {
+    padding-left: 40px;
+}
+
+/* Knoppen onderkant */
+.action-footer-right {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 35px;
+}
+
+.btn-submit-flow {
+    background: #1f3f8f;
+    color: white;
+    border: none;
+    padding: 14px 55px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(31, 63, 143, 0.2);
+}
+
+.navigation-back-zone {
+    margin-top: 25px;
+    padding-left: 10px;
+}
+
+.btn-back-flow {
+    display: inline-block;
+    text-decoration: none;
+    background: #1f3f8f;
+    color: white;
+    padding: 12px 38px;
+    border-radius: 20px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(31, 63, 143, 0.15);
+}
+
+/* ========================================== */
+/* SCHERM 2 SPECIFIEK: BLAADJES-KNOPPEN       */
+/* ========================================== */
+.leaf-buttons-group {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-leaf {
+    background: white;
+    border: 2px solid #1f3f8f;
+    color: #1f3f8f;
+    font-weight: bold;
+    font-style: italic;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 0px 20px 0px 20px; /* Organische bladvorm */
+    min-width: 65px;
+}
+
+.btn-leaf.active, .btn-leaf:hover {
+    background: #1f3f8f;
+    color: white;
+}
+
+/* ========================================== */
+/* SCHERM 3 SPECIFIEK: BEDRIJVEN INTERFACE    */
+/* ========================================== */
+.company-amount-block {
+    margin-bottom: 10px;
+}
+
+.company-field-width {
+    max-width: 320px;
+}
+
+.company-invoice-notice {
+    color: #333333;
+    font-size: 0.95rem;
+    font-style: italic;
+    font-weight: 600;
+    margin-top: 25px;
+}
+
+.company-footer-align {
+    margin-top: -15px; /* Trekt de verzendknop strak omhoog op gelijke lijn */
+}
+
+/* ========================================== */
+/* SCHERM 4: BEDANKT/SUCCES INTERFACE         */
+/* ========================================== */
+
+/* Zorgt dat de hoofdtitel netjes in het midden staat */
+.text-center-desktop {
+    text-align: center;
+    width: 100%;
+}
+
+/* Spacer die de hoogte opvangt van de melkpak-promo op scherm 2 */
+.empty-spacer-bedankt {
+    height: 120px; 
+}
+
+/* Centreren van de feestelijke grutto */
+.success-illustration-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.success-bird-img {
+    height: 180px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Grid specifieke configuratie voor de twee bedankt-blokken */
+.share-qr-grid {
+    gap: 60px; /* Geeft iets meer ademruimte tussen de twee blokken */
+}
+
+.info-action-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-action-block h3 {
+    color: #1f3f8f;
+    font-size: 1.1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+.info-action-block p {
+    color: #333333;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    flex-grow: 1; /* Duwt de iconen en knoppen netjes naar de onderkant bij ongelijke tekstlengte */
+}
+
+/* Grote zwarte social iconen */
+.social-share-icons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    align-items: center;
+}
+
+.share-icon-link img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+/* Het kader rondom de QR code */
+.qr-code-display-zone {
+    margin-bottom: 25px;
+}
+
+.qr-code-img {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+    display: block;
+}
+
+/* De blauwe actiepillen onder de kolommen */
+.action-btn-wrapper {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.btn-action-pill {
+    display: inline-block;
+    text-decoration: none;
+    background: #1f3f8f;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 10px rgba(31, 63, 143, 0.15);
+    transition: background-color 0.2s;
+}
+
+.btn-action-pill:hover {
+    background: #142a63;
+}
+
+/* Bredere terugknop specifiek voor de lange tekst */
+.long-back-btn {
+    padding: 12px 28px;
+}
