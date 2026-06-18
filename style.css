@@ -1,0 +1,270 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header{
+    position: fixed;
+
+    top: 2rem;
+    right: 2rem;
+
+    z-index: 10;
+}
+
+header img{
+    width: 9rem;
+}
+.kaart-bg{
+    width:100vw;
+    height:100vh;
+    object-fit:cover;
+    z-index:0;
+
+}
+
+
+
+.border-kleur-icoon{
+
+    display:grid;
+
+    place-items:center;
+
+    width:100%;
+    height:180px;
+
+    background:#B6BFDD;
+
+    border-radius:25px;
+
+}
+
+.border-kleur-icoon img{
+
+    width:150px;
+
+}
+.border-alles{
+
+    display:grid;
+
+    grid-template-rows:
+
+        180px
+        auto
+        auto;
+
+    justify-items:center;
+
+    gap:1rem;
+
+    padding:1.5rem;
+
+    background:#E7ECFE;
+
+    border-radius:30px;
+
+    transition:.3s;
+
+}
+.cirkel{
+
+    width:2rem;
+    height:2rem;
+
+    border-radius:50%;
+
+    border:4px solid #5168A8;
+
+    transition:.3s;
+
+}
+.keuze-boer p{
+    margin: 0;
+}
+
+.keuze-grutto p{
+    margin: 0;
+}
+.wolk-met-h1{
+
+    position:absolute;
+
+    top: -4rem;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:grid;
+
+    z-index:4;
+    width: 600px;
+
+}
+.keuzes{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,220px);
+
+    justify-content:center;
+
+    gap:2rem;
+
+}
+.wolk-met-h1>*{
+
+    grid-column:1;
+    grid-row:1;
+
+}
+
+.wolk-met-h1 h1{
+    place-self:center;
+    color:#21408F;
+    font-size: 2em;
+    font-family: "Be Vietnam Pro";
+}
+
+
+.wolktekst{
+    width:100%;
+
+}
+.welkomskaart{
+display:grid;
+grid-template-rows: auto auto;
+gap:3rem;
+padding:11rem 4rem 4rem 4rem;
+width:55rem;
+}
+
+.landing{
+
+    display:grid;
+
+    place-items:center;
+
+    min-height:100vh;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+.landing>*{
+
+    grid-column:1;
+    grid-row:1;
+
+}
+.introtekst{
+    padding-top: 4em;
+    width:65%;
+    font-size: larger;
+    display:grid;
+    gap:1.5rem;
+    justify-self:center;
+}
+.keuze-boer,
+.keuze-grutto{
+
+    text-decoration:none;
+
+}
+.border-alles:hover{
+
+    background:#C7D2F2;
+
+    transform:translateY(-8px);
+
+}
+
+.border-alles:hover .border-kleur-icoon{
+
+    background:#A2AED8;
+
+}
+
+.border-alles:hover .cirkel{
+
+    background:white;
+
+    border-color:white;
+
+}
+.border-alles p{
+font-size: 1.5em;
+color:#21408F;
+font-weight:700;
+font-family: "Be Vietnam Pro";
+}
+.grote-grutto{
+
+    position:absolute;
+
+    left: 20em;
+
+    bottom:1.5rem;
+
+    width:20rem;
+
+    z-index:4;
+
+}
+.kaart-container{
+
+    display:grid;
+
+    grid-column:1;
+    grid-row:1;
+
+    z-index:2;
+
+}
+.kaart-container > *{
+
+    grid-column:1;
+    grid-row:1;
+
+}
+
+.rechthoek{
+    width:55rem;
+    display:block;
+
+}
+.wolken{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    z-index:3;
+}
+.wolk-rechts-boven{
+
+    position:absolute;
+
+    width:22em;
+
+    top:-1em;
+
+    right: -3em;
+
+}
+.wolk-links-onder{
+
+    position:absolute;
+
+    width:40em;
+
+    bottom:-4em;
+
+    left:-5rem;
+
+}
