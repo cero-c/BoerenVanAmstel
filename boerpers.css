@@ -1,0 +1,209 @@
+/* =========================================
+   GENEL AYARLAR VE SABİT ELEMANLAR
+========================================= */
+:root {
+    --Be-Vietnam-Pro: "Be Vietnam Pro", sans-serif;
+    --Montserrat: "Montserrat", sans-serif;
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; 
+    font-family: var(--Be-Vietnam-Pro);
+}
+
+.map-bg { 
+    width: 100%;
+    height: 100%; 
+    object-fit: cover; 
+    position: absolute; 
+    z-index: 1; 
+}
+
+/* Sol Menü (Navbar) */
+.side-navbar {
+    position: absolute;
+    left: 0;
+    top: 10%; 
+    height: 80%; 
+    width: 60px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-left: none; 
+    border-radius: 0 30px 30px 0; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 0;
+    z-index: 10;
+    box-shadow: 5px 0 25px rgba(0, 0, 0, 0.1);
+}
+
+.menu-icon, .nav-btn { width: 40px; cursor: pointer; transition: transform 0.2s ease; }
+.menu-icon:hover, .nav-btn:hover { transform: scale(1.1); }
+.nav-bottom { display: flex; flex-direction: column; gap: 20px; }
+.nav-btn { width: 40px; margin-top: 20px; }
+
+/* Harita Üzerindeki İkonlar ve Logo */
+.boer-icon { position: absolute; top: 77%; left: 45%; z-index: 15; width: 40px; }
+.wolkAchterLogo { position: absolute; z-index: 15; top: -13%; left: 85%; width: 250px;}
+.logoKaart { position: absolute; z-index: 15; width: 120px; top: 3%; left: 90%; }
+
+/* Sağ Kenardaki Turuncu Doneer Kulakçığı */
+.doneer-flap {
+    position: absolute;
+    right: 0;
+    bottom: 25%;
+    background: #F1B565; 
+    color: #000;
+    padding: 25px 10px;
+    border-radius: 10px 0 0 10px;
+    font-family: var(--Be-Vietnam-Pro);
+    font-weight: bold;
+    font-size: 1.1rem;
+    writing-mode: vertical-rl; 
+    transform: rotate(180deg); 
+    cursor: pointer;
+    z-index: 20;
+    box-shadow: -3px 0 10px rgba(0,0,0,0.1);
+}
+
+/* =========================================
+   ANA İÇERİK: DOME (YARIM DAİRE) VE BAŞLIK
+========================================= */
+.content-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+}
+
+.dome-container {
+    position: relative;
+    width: 850px; 
+    height: 550px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    margin-top: 50px; 
+}
+
+.dome-bg { position: absolute; top: -17%; left: -17%; width: 1184px; height: 684px; object-fit: contain; z-index: -2; pointer-events: none;}
+.close-png { position: absolute; top: 0; right: 80px; width: 45px; cursor: pointer; z-index: 10; transition: transform 0.2s ease; }
+
+.title-wrapper {
+    position: absolute;
+    top: -60px; 
+    left: 50%;
+    transform: translateX(-50%); 
+    text-align: center;
+    width: 450px;
+    z-index: 10;
+}
+
+.title-blue {
+    color: rgb(42, 58, 112);
+    font-size: 1.3rem;
+    padding: 6rem 0px;
+    background-image: url(images/titelWolk.png);
+    background-size: cover;
+    background-position: center center;
+    margin: -6rem 0px 0px;
+    font-weight: bold;
+}
+
+/* =========================================
+   ADIMLAR (STEP 1 & 2): VİDEO VE BUTONLAR
+========================================= */
+.boer-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 100px; /* Videoyu başlıktan aşağı iter */
+    z-index: 5;
+}
+
+.video-container {
+    width: 580px;
+    height: 315px;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    background: #000; 
+}
+
+.video-player {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Buton Sırası */
+.button-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50em;
+    margin-top: 25px; 
+    z-index: 10;
+}
+
+.btn-terug {
+    background: #283770;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 12px 40px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: var(--Be-Vietnam-Pro);
+    transition: 0.3s;
+}
+
+.btn-action {
+    background: #283770;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    font-family: var(--Be-Vietnam-Pro);
+    line-height: 1.3;
+    transition: 0.3s;
+}
+
+.btn-action.single-line { padding: 12px 40px; }
+.btn-terug:hover, .btn-action:hover { background: #1c2750; transform: scale(1.03); }
+
+/* Ortadaki Çiftçi Avatarı */
+.boer-avatar {
+    position: absolute;
+    bottom: -80px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px; 
+    z-index: 15;
+}

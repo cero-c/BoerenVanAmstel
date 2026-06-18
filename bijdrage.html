@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bijdragen aan Natuurherstel - Boeren van Amstel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <img src="images/kaartGruttoPers.png" class="map-bg" alt="Kaart Achtergrond">
+
+    <nav class="side-navbar">
+        <div class="nav-top">
+            <img src="images/hamburgermenu.png" class="menu-icon" alt="Menu">
+        </div>
+        <div class="nav-bottom">
+            <img src="images/gruttoPersOptie.svg" class="nav-btn" alt="Bird">
+            <img src="images/settings.png" class="nav-btn" alt="Settings">
+            <img src="images/info.png" class="nav-btn" alt="Info">
+        </div>
+    </nav>
+
+    <img src="images/wolkAchterLogo.png" class="wolkAchterLogo">
+    <img src="images/bva-logo-blauw.png" class="logoKaart">
+
+    <section class="content-overlay">
+        <div class="dome-container">
+            
+            <img src="images/groteWolkTextbox.png" class="dome-bg" alt="Achtergrond">
+            <img src="images/sluitButton.png" class="close-png" alt="Sluiten">
+
+            <div class="title-wrapper">
+                <h2 id="doneren-title" class="title-blue">Je wilt bijdragen aan natuurherstel</h2>
+                <img src="images/felicitatie.png" id="confetti-img" class="confetti-img" style="display: none;" alt="Confetti">
+            </div>
+
+            <div id="step-0" class="dome-content" style="display: flex;">
+                <div class="text-column">
+                    <p class="quote">"De initiatiefnemers vonden het heel belangrijk om inwoners van Amsterdam bij de natuurontwikkeling te betrekken. De boeren gingen zelf met de bus de stad in om met potentiële afnemers van hun melk te praten. Ze lieten de melk proeven, toonden aan voldoende volume te hebben en leveringszekerheid."</p>
+                    <p class="author"><strong>Biologe Dr. D.A. (Dorith) Vermunt</strong> over Boeren van Amstel en duurzame businessmodellen (2019).</p>
+                </div>
+                <div class="image-column">
+                    <img src="images/bioloogFoto.png" alt="Biologe Dorith Vermunt" class="bio-photo">
+                    <button class="btn-next centered-btn" onclick="goToStep(1)">Verder</button>
+                </div>
+            </div>
+
+            <div id="step-1" class="doneren-step" style="display: none; flex-direction: row;">
+                <div class="product-column">
+                    <img src="images/melkKaas.png" alt="Melk en Kaas" class="product-img">
+                </div>
+                <div class="text-column right-align-content">
+                    <p>Misschien denk je dat natuurherstel begint met grote veranderingen. Maar soms begint het met iets eenvoudigs, zoals een pak melk.</p>
+                    <p>Van iedere verkochte liter zuivel gaat 2 cent naar natuurmaatregelen voor weidevogels zoals ik. Daarmee worden onder andere bloemrijke slootranden aangelegd, waterpeilen verbeterd en veilige broedplekken gecreëerd.</p>
+                    <p>Voor iedere kilo verkochte kaas wordt één vierkante meter biodiversiteit ingezaaid langs de slootranden van Amstelland.</p>
+                    <p><strong>Jouw keuze blijft dus niet in de supermarkt achter.</strong></p>
+                    
+                    <div class="button-group-right">
+                        <button class="btn-secondary">Waar te koop?</button>
+                        <button class="btn-primary" onclick="goToStep(2)">Verder</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="step-2" class="doneren-step" style="display: none; flex-direction: column;">
+                <p class="intro-text">Met jouw steun kunnen boeren blijven werken aan bloemrijke slootranden, gezonde weilanden en veilige plekken voor weidevogels. Kies voor een eenmalige bijdrage en help mee aan een toekomst vol leven. Bij een donatie van meer dan € 20 verdien je bovendien als dank een vers pak melk!</p>
+                <p class="link-text"><strong>Wil je als bedrijf doneren en plaatsvinden op het ons bord voor top donateurs? <br><a href="#">Klik hier.</a></strong></p>
+
+                <div class="donation-options">
+                    
+                    <div class="tabs-container">
+                        <button class="tab active">Eenmalig</button>
+                        <button class="tab">Maandelijks</button>
+                        <button class="tab">Jaarlijks</button>
+                    </div>
+                    
+                    <div class="amount-selection">
+                        <div class="amount-preset">
+                            <label>Kies je bedrag</label>
+                            <div class="preset-buttons">
+                                <button class="amount-btn" data-amount="5">€5</button>
+                                <button class="amount-btn" data-amount="10">€10</button>
+                                <button class="amount-btn" data-amount="20">€20</button>
+                            </div>
+                        </div>
+                        
+                        <div class="amount-custom">
+                            <label>Vul zelf een bedrag in</label>
+                            <div class="input-wrapper">
+                                <span>€</span>
+                                <input type="number" placeholder="0">
+                            </div>
+                        </div>
+                    </div>
+                    <p class="hover-info"><em>Hover over een bedrag en ontdek de impact.</em></p>
+                </div>
+                
+                <div class="button-group-right bottom-corner">
+                    <button class="btn-primary" onclick="goToStep(3)">Verder</button>
+                </div>
+            </div>
+
+            <div id="step-3" class="doneren-step" style="display: none; flex-direction: column;">
+                <h3 id="step-3-subtitle" class="subtitle-blue">Je hebt gekozen voor een eenmalige donatie van 5 euro</h3>
+                
+                <form class="donation-form">
+                    <div class="form-group">
+                        <label>Voornaam</label>
+                        <input type="text" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label>Achternaam</label>
+                        <input type="text" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label>E-mailadres</label>
+                        <input type="email" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label>Bank</label>
+                        <select>
+                            <option>Kies uw bank</option>
+                            <option>ING</option>
+                            <option>Rabobank</option>
+                            <option>ABN AMRO</option>
+                        </select>
+                    </div>
+                </form>
+
+                <div class="button-group-right bottom-corner">
+                    <button class="btn-tertiary" onclick="goToStep(2)">Terug naar bedragen</button>
+                    <button class="btn-primary" onclick="goToStep(4)">Doneer!</button>
+                </div>
+            </div>
+
+            <div id="step-4" class="doneren-step" style="display: none; flex-direction: column;">
+                <p class="thanks-text">Dankzij jouw donatie help je mee aan meer bloemen, insecten en veilige broedplekken voor weidevogels in Amstelland.</p>
+                
+                <div class="share-grid">
+                    <div class="share-col">
+                        <h4>Laat zien dat jij natuur ondersteunt</h4>
+                        <p>Help ons meer mensen te bereiken door jouw bijdrage te delen.</p>
+                        
+                        <div class="social-flex">
+                            <img src="images/insta.png" class="social-icon" alt="Instagram">
+                            <img src="images/whatsapp.png" class="social-icon" alt="WhatsApp">
+                            <img src="images/facebook.png" class="social-icon" alt="Facebook">
+                        </div>
+                        
+                        <button class="btn-primary">Deel met je vrienden</button>
+                    </div>
+                    <div class="share-col">
+                        <h4>Je gratis pak Boeren van Amstel melk staat voor je klaar</h4>
+                        <p>Laat de QR-code zien bij een van onze verkooppunten en ontvang jouw gratis pak melk. Je vindt de QR-code in jouw inbox.</p>
+                        <img src="images/qrCode.png" class="qr-code" alt="QR Code">
+                        <button class="btn-primary">Bekijk de verkooppunten</button>
+                    </div>
+                </div>
+            </div>
+
+            <img src="images/tutorialGrutto.png" id="doneren-bird" class="doneren-bird" style="display: none;">
+
+        </div>
+    </section>
+
+    <div id="impact-overlay" class="impact-overlay" style="display: none;">
+        <div class="impact-modal">
+            <img id="impact-image" src="" alt="Impact">
+        </div>
+    </div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

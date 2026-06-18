@@ -1,0 +1,942 @@
+:root {
+    --Be-Vietnam-Pro: "Be Vietnam Pro", sans-serif;
+    --Montserrat: "Montserrat", sans-serif;
+}
+
+p {
+    font-family: var(--Be-Vietnam-Pro);
+    
+}
+
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; 
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+.hero-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Sadece arka plan haritası tam ekran olsun */
+/* .map {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+} */
+
+.map-bg { 
+    width: 100%;
+    height: 100%; 
+    object-fit: cover; 
+    position: absolute; 
+    z-index: 1; 
+}
+
+/* Diğerleri kendi boyutlarında kalsın, zorla büyütmeyelim */
+.clouds {
+    position: absolute;
+    width: 100%; /* Bulutlar ekranı kaplasın istiyorsan */
+    z-index: 2;
+    pointer-events: none; /* Üzerine tıklanmasını engeller, kuşun altına girmesin */
+}
+
+.logo-container {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* width/height verme, kendi içindeki resmin boyutuyla gelsin */
+}
+
+.bird {
+    position: absolute;
+    z-index: 4;
+    height: 300px; /* İhtiyaca göre ayarla */
+    width: auto;   /* Boyutun korunması için çok önemli */
+    top: 15%;
+    left: 40%;
+}
+
+
+/* =========================================
+   SOL NAVBAR (GLASSMORPHISM)
+========================================= */
+.side-navbar {
+    position: absolute;
+    left: 0;
+    top: 10%; 
+    height: 80%; 
+    width: 60px;
+    
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-left: none; 
+    border-radius: 0 30px 30px 0; 
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 0;
+    z-index: 10;
+    box-shadow: 5px 0 25px rgba(0, 0, 0, 0.1);
+}
+
+.nav-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+}
+
+.menu-icon, .nav-btn {
+    width: 40px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.menu-icon:hover, .nav-btn:hover {
+    transform: scale(1.1);
+}
+
+
+/* =========================================
+   DAMLA / KONUŞMA BALONU (LIQUID GLASS)
+========================================= */
+/* Balonun Dış Konumu */
+/* Balonun Ekrandaki Konumu */
+.tutorial-wrapper {
+    position: absolute;
+    top: 10%;
+    right: 11%; 
+    z-index: 10;
+}
+
+/* Kapsayıcının içindeki resim */
+.tutorial-bg-img {
+    width: 480px; /* Resmin ekrandaki büyüklüğü */
+    height: auto;
+    display: block;
+}
+
+/* Ana Kutu (Flexbox ile düzenliyoruz) */
+.tutorial-content {
+    position: absolute;
+    top: 45%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    text-align: center;
+    color: #0b1120;
+    font-family: sans-serif;
+    
+    /* YENİ: Flexbox ayarları */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* YENİ: Metin Alanı (Sabit Yükseklik) */
+.text-wrapper {
+    height: 140px; /* Bu yüksekliği metinlerine göre biraz artırıp azaltabilirsin */
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Metin az da olsa çok da olsa dikeyde ortalar */
+    margin-bottom: 5px;
+}
+
+/* Kompakt Başlık */
+.title-dark {
+    color: #2a3a70;
+    margin-bottom: 8px; /* Boşluğu azalttık */
+    font-size: 1.15rem; /* Biraz küçülttük */
+    line-height: 1.2;
+}
+
+/* Kompakt Paragraflar */
+.tutorial-content p {
+    font-size: 0.9rem; /* Biraz küçülttük */
+    margin-bottom: 6px; /* Boşluğu azalttık */
+    line-height: 1.3; /* Satır aralığını daralttık */
+}
+
+/* Adım Göstergesi ve Butonlar (Aynı kalıyor, sadece margin ayarlandı) */
+.step-indicator {
+    font-weight: bold;
+    color: #666;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-skip, .btn-next {
+    background: #364883;
+    color: white;
+    border: 1px solid white;
+    padding: 10px 25px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-skip:hover, .btn-next:hover {
+    background: #23315e;
+}
+
+/* Küçük Geri Butonu (Sadece 3. Adımda Görünecek) */
+/* Küçük Geri Butonu (Zarif Çerçeveli Buton Hali) */
+.btn-terug-small {
+    background: transparent; /* İçi boş */
+    border: 1px solid #364883;  /* İnce gri çerçeve */
+    color: #364883;             /* Gri yazı */
+    padding: 6px 20px;       /* İç boşluklar */
+    border-radius: 15px;     /* Yuvarlak köşeler */
+    font-size: 0.85rem;
+    margin-top: 20px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+    text-decoration: none;   /* Alt çizgisini kaldırdık */
+    transition: all 0.3s ease;
+}
+
+.btn-terug-small:hover {
+    background: #364883;        /* Üzerine gelince içi gri dolsun */
+    color: white;            /* Yazı beyaz olsun */
+}
+
+/* Kuş Konumu */
+.grutto-char {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    width: 300px;
+    z-index: 15; /* Balonun üzerine hafifçe binmesi için z-index yüksek tutuldu */
+}
+.wolkstand {
+    position: absolute;
+    z-index: 16;
+    bottom: -4%;
+    right: 2%;
+}
+
+.wolkAchterLogo {
+    position: absolute;
+    z-index: 15;
+    top: -13%;
+    left: 85%;
+}
+
+.logoKaart {
+    position: absolute;
+    z-index: 15;
+    width: 120px;
+    top: 3%;
+    left: 90%;
+}
+
+/* Sayfaları gizle ve hepsini ekranı kaplayacak şekilde ayarla */
+.screen {
+    display: none; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+#begin-scherm { 
+    display: block;
+    cursor: pointer;
+    display: block;
+} 
+
+#intro-video {
+    cursor: pointer; /* Fare videonun üzerine gelince el işareti çıksın */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Video için tam ekran ayarı */
+#video-scherm video { width: 100%; height: 100%; object-fit: cover; }
+/* Menü ikonları için temel stil */
+/* .menu-icon { font-size: 30px; color: #2a3a70; cursor: pointer; } */
+.nav-btn { width: 40px; margin-top: 20px; }
+
+/* Bulutlar */
+/* .clouds-bg {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 2; 
+    pointer-events: none;
+} */
+
+
+/* Tüm bulutlar için ortak temel */
+.cloud {
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+/* Her bulut için farklı pozisyon ve hız */
+.cloud-1 { top: 0%; left: 0%; width: 600px; animation-duration: 80s; }
+.cloud-2 { top: 0%; left: 30%; width: 400px; animation-duration: 60s; }
+.cloud-3 { top: -12%; left: 40%; width: 550px; animation-duration: 100s; }
+.cloud-4 { top: 72%; left: 70%; width: 550px; animation-duration: 50s; }
+.cloud-5 { top: 73%; left: 10%; width: 850px; animation-duration: 75s; }
+.cloud-6 { top: 0%; left: 70%; width: 600px; animation-duration: 90s; }
+.cloud-7 { top: 30%; left: 70%; width: 500px; animation-duration: 55s; }
+.cloud-8 { top: 30%; left: 5%; width: 400px; animation-duration: 85s; }
+.cloud-9 { top: 25%; left: 28%; width: 850px; animation-duration: 90s; }
+
+.cloud-1 { 
+    animation-name: moveLeft; 
+    animation-duration: 90s; 
+}
+
+.cloud-2 { 
+    animation-name: moveLeft; 
+    animation-duration: 60s; 
+}
+
+.cloud-3 { 
+    animation-name: moveRight; 
+    animation-duration: 90s; 
+}
+
+.cloud-4 { 
+    animation-name: moveLeft; 
+    animation-duration: 100s; 
+}
+
+.cloud-5 { 
+    animation-name: moveLeft; 
+    animation-duration: 30s; 
+}
+
+.cloud-6 { 
+    animation-name: moveRight; 
+    animation-duration: 60s; 
+}
+
+.cloud-7 { 
+    animation-name: moveRight; 
+    animation-duration: 90s; 
+}
+
+.cloud-8 { 
+    animation-name: moveLeft; 
+    animation-duration: 90s; 
+}
+
+.cloud-9 { 
+    animation-name: moveLeft; 
+    animation-duration: 100s; 
+}
+
+
+
+
+/* Sağa gidenler için */
+@keyframes moveRight {
+    0% { transform: translateX(0vw); }
+    100% { transform: translateX(40vw); }
+}
+
+/* Sola gidenler için */
+@keyframes moveLeft {
+    0% { transform: translateX(0vw); }
+    100% { transform: translateX(-50vw); }
+}
+
+@keyframes moveClouds {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(120vw); } 
+}
+
+
+
+/* Tüm screen'ler için */
+.screen {
+    display: none; 
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100vh;
+}
+
+.clouds-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%; /* Resmin tekrarlaması için geniş tutuyoruz */
+    height: 100vh;
+    background-image: url('images/wolken.png');
+    background-repeat: repeat-x; /* Yatayda sürekli tekrar etsin */
+    background-size: contain;
+    z-index: 2;
+    pointer-events: none;
+    
+    /* Animasyonu bağlayalım */
+    animation: moveClouds 60s linear infinite;
+}
+
+/* Marker Stilleri */
+.map-marker {
+    position: absolute;
+    width: 100px; /* Boyutu resmine göre ayarla */
+    z-index: 5; /* Haritanın üstünde, balonun altında kalsın */
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.map-marker:hover {
+    transform: scale(1.1) translateY(-10px); /* Üzerine gelince hafifçe büyüyüp yukarı zıplasın */
+}
+
+
+
+/* =========================================
+   BIJDRAGE (YENİ SAYFA) STİLLERİ
+========================================= */
+
+/* Tüm içeriği ortalayan ana katman */
+.content-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+}
+
+/* Başlık ve Arkasındaki Bulut */
+.header-cloud {
+    position: relative;
+    width: 600px;
+    text-align: center;
+    margin-bottom: -40px; /* Alttaki kutuyla hafif iç içe girmesi için */
+    z-index: 6;
+}
+
+.bg-cloud {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: -50px;
+    left: 0;
+    z-index: -1;
+}
+
+.title-blue {
+    color: #2a3a70;
+    font-size: 1.5rem;
+    padding-top: 20px;
+}
+
+/* Ana Bilgi Kartı (Glassmorphism) */
+.info-card {
+    position: relative;
+    width: 800px;
+    background: rgba(255, 255, 255, 0.85); /* Hafif saydam beyaz */
+    backdrop-filter: blur(10px);
+    border-radius: 40px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    padding: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    z-index: 5;
+}
+
+/* Kapatma Çarpısı */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border: 3px solid #000;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.close-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Metin ve Resim Yan Yana (Flexbox) */
+.info-content {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.text-column {
+    flex: 1; /* Sol taraf (metin) boşluğu doldursun */
+    color: #000;
+}
+
+.quote {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    font-style: italic; /* Alıntı olduğu için italik */
+}
+
+.author {
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.image-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Butonu sağa yaslamak için */
+    width: 300px; /* Fotoğrafın genişliği */
+}
+
+.align-right {
+    align-self: flex-end;
+}
+
+/* =========================================
+   BIJDRAGE SAYFASI (YARIM DAİRE TASARIMI)
+========================================= */
+
+.content-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+}
+
+/* Tüm İçeriği Tutan Merkez Kutu */
+.dome-container {
+    position: relative;
+    width: 850px; 
+    height: 550px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px; 
+}
+
+/* Yarım Daire Arka Plan Resmi */
+.dome-bg {
+    position: absolute;
+    top: -17%;
+    left: -17%;
+    width: 1184px;
+    height: 684px;
+    object-fit: contain; 
+    z-index: -2;
+}
+
+/* Özel Kapatma Butonu PNG'si */
+.close-png {
+    position: absolute;
+    top: 0; 
+    right: 80px; 
+    width: 45px;
+    cursor: pointer;
+    z-index: 10;
+    transition: transform 0.2s ease;
+}
+
+.close-png:hover {
+    transform: scale(1.1);
+}
+
+/* Başlık ve Bulut Grubu */
+.title-wrapper {
+    position: absolute;
+    top: -60px; 
+    left: 50%;
+    transform: translateX(-50%); 
+    text-align: center;
+    width: 450px;
+    z-index: 10;
+}
+
+.title-cloud-bg {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 130%; /* Bulutu başlıktan daha geniş yapar */
+    z-index: -1;
+    pointer-events: none;
+}
+
+.title-blue {
+    color: #2a3a70;
+    font-size: 1.3rem;
+    padding: 6rem 0;
+    background-image: url(images/titelWolk.png);
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    margin-top: -6rem;
+    font-weight: bold;
+}
+
+/* Metin ve Resim Alanı */
+.dome-content {
+    display: flex;
+    gap: 40px;
+    width: 82%; 
+    padding-top: 60px;
+    z-index: 5;
+    align-items: flex-start; 
+}
+
+.text-column {
+    flex: 1;
+    color: #0b1120;
+    font-family: sans-serif;
+    margin-top: 20px; 
+}
+
+.bio-photo {
+    width: 80%;
+    border-radius: 10px; 
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.quote {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    font-style: italic;
+}
+
+.author {
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/* Fotoğraf ve Altındaki Buton */
+.image-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Butonu fotoğrafın tam ortasına hizalar */
+    width: 250px;
+}
+
+
+.centered-btn {
+    background: #364883;
+    color: white;
+    border: none;
+    margin-top: 3em;
+    padding: 10px 30px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.centered-btn:hover {
+    background: #23315e;
+}
+
+/* =========================================
+   DONEREN AKIŞI STİLLERİ (YENİ EKLENEN 4 ADIM)
+========================================= */
+
+.doneren-step {
+    width: 79%;
+    padding-top: 4em;
+    padding-left: 4em;
+    height: 100%;
+    z-index: 5;
+    position: absolute;
+    top: 0;
+}
+
+/* Adım 1: Ürün ve Metin */
+.product-column {
+    flex: 0.1; /* Sütunun yapısal alanını çok küçülttük ki metne devasa bir yer kalsın */
+    position: relative; /* Resmi serbest bırakmak için referans noktası yaptık */
+}
+
+.product-img {
+    position: absolute;
+    width: 28em;
+    left: -10em;
+    bottom: -5em;
+    z-index: 10;
+}
+
+
+.right-align-content {
+    flex: 1.9;
+    padding-left: 5em;
+    padding-top: 10px;
+    padding-right: 20px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #0b1120;
+}
+
+.right-align-content > p{
+    margin-bottom: 1em;
+
+}
+
+/* Ortak Buton Stilleri */
+.button-group-right {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn-primary { background: #2a3a70; color: white; border: none; padding: 10px 25px; border-radius: 20px; cursor: pointer; font-weight: bold; }
+.btn-primary:hover { background: #1c2750; }
+.btn-secondary { background: transparent; color: #2a3a70; border: 2px solid #2a3a70; padding: 10px 25px; border-radius: 20px; cursor: pointer; font-weight: bold; }
+.btn-tertiary { background: #dce1eb; color: #2a3a70; border: none; padding: 10px 25px; border-radius: 20px; cursor: pointer; font-weight: bold; }
+
+/* Adım 2: Form ve Seçenekler */
+.intro-text { font-size: 0.95rem; margin-bottom: 10px; color: #0b1120; line-height: 1.4; }
+.link-text { color: #2a3a70; font-size: 0.9rem; margin-bottom: 30px; }
+.link-text a { color: #2a3a70; text-decoration: none; }
+
+.tabs {
+    display: flex;
+    background: #2a3a70;
+    border-radius: 30px;
+    width: fit-content;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+.tab {
+    background: transparent; color: white; border: none; padding: 10px 30px; cursor: pointer; font-weight: bold;
+}
+.tab.active { background: #55689e; border-radius: 30px; }
+
+.amount-selection { 
+    display: flex; 
+    gap: 40px; 
+    align-items: flex-end; 
+    margin-top: 40px; /* YENİ: Bu alan ve butonlar artık daha aşağıda duracak */
+    margin-bottom: 5px; 
+}
+.amount-selection label { font-weight: bold; color: #2a3a70; display: block; margin-bottom: 15px; font-style: italic;}
+
+.preset-buttons { display: flex; gap: 10px; }
+.amount-btn {
+    background: transparent; 
+    border: 2px solid #2a3a70; 
+    color: #2a3a70; 
+    font-weight: bold; 
+    cursor: pointer; 
+    font-size: 1.2rem;
+    
+    /* SENİN YAPRAK ŞEKLİN */
+    border-radius: 3em 0 3em 0; 
+    
+    /* SABİT BOYUTLANDIRMA */
+    width: 80px;  /* Hepsini aynı genişliğe sabitler */
+    height: 45px; /* Hepsini aynı yüksekliğe sabitler */
+    
+    /* YAZIYI TAM MERKEZE ORTALAMA */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* İstersen fontu da kök değişkene bağlayabilirsin */
+    font-family: var(--ana-font);
+    transition: all 0.3s ease;
+}
+
+.amount-btn:hover { 
+    background: #2a3a70; 
+    color: white; 
+}
+.input-wrapper { display: flex; align-items: center; border: 1px solid #ccc; border-radius: 20px; padding: 8px 15px; background: #f0f0f0; }
+.input-wrapper input { border: none; background: transparent; width: 80px; font-size: 1.1rem; outline: none; margin-left: 5px; color: #2a3a70; font-weight: bold; }
+
+.hover-info { font-size: 0.85rem; color: #666; margin-top: 15px; font-style: italic;}
+
+/* Adım 3: Form Grid */
+.subtitle-blue { color: #2a3a70; margin-bottom: 25px; }
+.donation-form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 90%; }
+.form-group label { display: block; font-style: italic; margin-bottom: 8px; font-size: 0.9rem; color: #000; }
+.form-group input, .form-group select { width: 100%; padding: 12px; border-radius: 20px; border: 1px solid #999; outline: none; background: transparent; }
+
+/* Adım 4: Paylaşım */
+.thanks-text { font-size: 1.05rem; margin-bottom: 30px; width: 80%; color: #0b1120; }
+.share-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.share-col h4 { color: #000; margin-bottom: 10px; font-size: 1.1rem; }
+.share-col p { font-size: 0.95rem; margin-bottom: 15px; color: #0b1120; line-height: 1.4; }
+/* Sütunları Flex kutusuna çeviriyoruz */
+.share-col {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Sütunların grid içinde eşit boyda olmasını sağlar */
+}
+
+/* Sütun içindeki butonları her zaman en alta iter */
+.share-col .btn-primary {
+    margin-top: auto; /* Sihirli kod: Yukarıdaki boşluğu otomatik doldurur, butonu dibe iter */
+    align-self: flex-start; /* Butonun tüm genişliği kaplamasını engeller, kendi boyutunda kalmasını sağlar */
+}
+.social-icons { height: 45px; margin-bottom: 20px; display: block; }
+.qr-code { width: 7em; margin-bottom: 20px; display: block; border-radius: 10px; background: white;}
+
+/* Sabit Kuş ve Alt Köşe İtici */
+.doneren-bird { position: absolute; bottom: -5%; right: -5%; width: 250px; z-index: 10; pointer-events: none; }
+.bottom-corner { position: absolute; bottom: 50px; right: 50px; }
+
+/* --- 1. SEKME (TABS) DERİNLİK TASARIMI --- */
+.tabs-container {
+    display: flex;
+    background: #dce1eb; /* Açık grimsi mavi arka plan */
+    border-radius: 35px;
+    width: fit-content;
+    margin-bottom: 30px;
+    padding: 6px; /* İçeriye doğru boşluk (butonların sıkışmaması için) */
+    box-shadow: inset 0 3px 6px rgba(0,0,0,0.15); /* İÇE DOĞRU GÖLGE (Derinlik hissini veren kısım) */
+    gap: 5px;
+}
+
+.tab {
+    background: transparent; 
+    color: #2a3a70; /* Pasifken lacivert yazı */
+    border: none; 
+    padding: 10px 30px; 
+    cursor: pointer; 
+    font-weight: bold;
+    border-radius: 30px; /* Butonların kendi yuvarlaklığı */
+    transition: all 0.3s ease;
+}
+
+/* Seçili olan (aktif) sekmenin tasarımı */
+.tab.active { 
+    background: #2a3a70; 
+    color: white; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Dışarı doğru gölgeyle öne çıkma */
+}
+
+/* --- 2. MİKTAR BUTONU (AMOUNT) AKTİF HALİ --- */
+.amount-btn.active {
+    background: #2a3a70;
+    color: white;
+}
+
+/* --- 3. OVERLAY (POP-UP) STİLLERİ --- */
+.impact-overlay {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 100vw; 
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.1); /* Karartmayı biraz azalttım, daha şık durur */
+    backdrop-filter: blur(1px); 
+    z-index: 9999; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* EN ÖNEMLİ KISIM: Hayalet Modu */
+    pointer-events: none; /* Fare bu katmanı görmezden gelir, alttaki butonla bağ kopmaz! */
+}
+
+.impact-modal {
+    background: #f5f5f5;  /* Şeffaflığı iptal ettik, saf beyaz yaptık */
+    padding: 20px;        /* Resmin etrafında beyaz bir çerçeve payı bıraktık */
+    border-radius: 20px;  /* Beyaz kutunun köşelerini yuvarlattık */
+    max-width: 80%;
+    max-height: 85vh;
+    transform: translateY(-80px); 
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3); /* Gölgeyi beyaz kutuya taşıdık */
+}
+
+.impact-modal img {
+    max-width: 100%;
+    max-height: 75vh;
+    object-fit: contain;
+    display: block;
+    border-radius: 10px; /* İçerideki resmin de köşelerini hafif yuvarlattık */
+}
+/* --- KONFETİ EFEKTİ --- */
+.confetti-img {
+    position: absolute;
+    top: -80px; /* Konfetinin yüksekliği, duruma göre değiştirebilirsin */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140%; /* Buluttan biraz daha geniş alana yayılması için */
+    z-index: 0; /* Bulutun önünde, yazının arkasında kalsın */
+    pointer-events: none;
+}
+
+/* Başlığın konfetinin altında kalmaması için garantiye alıyoruz */
+.title-blue {
+    position: relative;
+    z-index: 2;
+}
+
+/* --- SOSYAL MEDYA İKONLARI YAN YANA --- */
+.social-flex {
+    display: flex;
+    gap: 15px; /* İkonlar arasındaki boşluk */
+    margin-bottom: 25px;
+    align-items: center;
+}
+
+.social-icon {
+    height: 45px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.social-icon:hover {
+    transform: scale(1.1); /* Fareyle üzerine gelince hafifçe büyüsünler (tatlı bir detay) */
+}
+
+#confetti-img {
+    width: 19em;
+    z-index: 20;
+}
