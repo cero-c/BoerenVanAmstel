@@ -940,3 +940,107 @@ body, html {
     width: 19em;
     z-index: 20;
 }
+
+/* =========================================
+   LOKASYON BİLGİ SAYFALARI (Polderzicht, Ysbreeker, AH)
+========================================= */
+
+.info-layout {
+    width: 85%;
+    margin-top: 60px; /* Başlıktan aşağı iter */
+    display: flex;
+    flex-direction: column;
+    z-index: 5;
+    height: 380px; /* İçeriklerin dışarı taşmasını engeller */
+}
+
+/* Ysbreeker gibi sayfaları dikeyde ortalamak için */
+.centered-y {
+    justify-content: center;
+}
+
+.intro-center {
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #0b1120;
+    margin-bottom: 30px;
+    padding: 0 20px;
+}
+
+.split-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch; /* Sütun boylarını eşitler */
+    height: 100%;
+}
+
+.col-left, .col-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Aradaki ince çizgi */
+.col-divider {
+    width: 1px;
+    background-color: #2a3a70;
+    margin: 0 30px;
+    opacity: 0.3;
+}
+
+.flex-col {
+    justify-content: flex-start;
+}
+
+.col-right h3 {
+    color: #0b1120;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.text-center { text-align: center; }
+.margin-bot { margin-bottom: 20px; color: #2a3a70; font-size: 1.1rem; }
+
+/* Resim Stilleri */
+.fit-img {
+    width: 100%;
+    max-height: 250px;
+    object-fit: contain;
+}
+
+.rounded-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+/* İkonlu Satırlar (AH sayfası için) */
+.icon-text-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.small-logo { width: 60px; object-fit: contain; }
+.small-product { width: 80px; object-fit: contain; }
+.icon-text-row p { font-size: 0.9rem; line-height: 1.4; color: #0b1120; }
+
+/* Butonu Sağ Alta Yaslama Sırrı */
+.align-bottom-right {
+    align-self: flex-end;
+    margin-top: auto; /* Kalan tüm boşluğu yukarıdan iterek butonu dibe yapıştırır */
+}
+
+/* Alt Ortadan Çıkan İkonlar (Ev, Kahve, Dükkan vb.) */
+.bottom-avatar {
+    position: absolute;
+    bottom: -60px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110px; /* İhtiyaca göre büyütebilirsin */
+    z-index: 15;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2)); /* Şık bir gölge */
+}
