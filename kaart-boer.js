@@ -6,11 +6,15 @@ mapImage.src = "images/Grutto-kaart.png";
 
 const markerImages = {
     boerderij: new Image(),
-    vogel: new Image()
+    vogel: new Image(),
+    verkooppunt: new Image(),
+    horeca: new Image()
 };
 
 markerImages.boerderij.src = "images/boerderij.png";
 markerImages.vogel.src = "images/weidevogels.png";
+markerImages.verkooppunt.src="images/verkooppunt.png";
+markerImages.horeca.src="images/horeca.png";
 
 const markerBackgrounds = {
     klein: new Image(),
@@ -26,8 +30,6 @@ const markers = [
         x: 0.60,
         y: 0.42,
         type: "boerderij",
-        featured: true,
-        text: "Klik op mij en ontdek het verhaal van de boeren!",
         link: "index.html",
         hoverScale: 1
     },
@@ -35,8 +37,6 @@ const markers = [
         x: 0.39,
         y: 0.45,
         type: "vogel",
-        featured: true,
-        text: "Klik op mij en ontdek de weidevogelgebieden!",
         link: "index.html",
         hoverScale: 1
     },
@@ -50,7 +50,26 @@ const markers = [
     { x: 0.34, y: 0.75, type: "vogel" },
     { x: 0.52, y: 0.73, type: "vogel" },
     { x: 0.61, y: 0.84, type: "vogel" },
-    { x: 0.43, y: 0.90, type: "vogel" }
+    { x: 0.43, y: 0.90, type: "vogel" },
+
+    { x: 0.4, y: 0.23, type: "verkooppunt" },
+    { x: 0.45, y: 0.3, type: "verkooppunt" },
+    { x: 0.5, y: 0.19, type: "verkooppunt" },
+    { x: 0.2, y: 0.54, type: "verkooppunt" },
+    { x: 0.17, y: 0.5, type: "verkooppunt" },
+    { x: 0.24, y: 0.48, type: "verkooppunt" },
+    { x: 0.19, y: 0.27, type: "verkooppunt" },
+    { x: 0.42, y: 0.35, type: "verkooppunt" },
+
+    { x: 0.45, y: 0.23, type: "horeca" },
+    { x: 0.2, y: 0.35, type: "horeca" },
+    { x: 0.45, y: 0.09, type: "horeca" },
+    { x: 0.2, y: 0.54, type: "horeca" },
+    { x: 0.15, y: 0.42, type: "horeca" },
+    { x: 0.5, y: 0.28, type: "horeca" },
+    { x: 0.55, y: 0.33, type: "horeca" },
+
+
 ];
 
 let scale = 1;
@@ -66,7 +85,9 @@ let startY = 0;
 let hoveredMarker = null;
 const filters = {
     boerderij: true,
-    vogel: true
+    vogel: true,
+    verkooppunt: true,
+    horeca: true
 };
 
 
@@ -332,6 +353,7 @@ mapImage.onload = resizeCanvas;
 
 markerImages.boerderij.onload = draw;
 markerImages.vogel.onload = draw;
+markerImages.verkooppunt.onload = draw;
 
 markerBackgrounds.klein.onload = draw;
 markerBackgrounds.groot.onload = draw;
@@ -368,6 +390,24 @@ if (openBtn && closeBtn && overlay) {
 
 const filterBoerderijen = document.querySelector("#filterBoerderijen");
 const filterWeidevogels = document.querySelector("#filterWeidevogels");
+const filterVerkooppunten = document.querySelector("#filterVerkooppunten");
+const filterHoreca = document.querySelector('#filterHoreca');
+
+if (filterVerkooppunten) {
+    filterVerkooppunten.addEventListener("change", function () {
+        filters.verkooppunt = filterVerkooppunten.checked;
+        hoveredMarker = null;
+        draw();
+    });
+}
+
+if (filterHoreca) {
+    filterHoreca.addEventListener("change", function () {
+        filters.horeca = filterHoreca.checked;
+        hoveredMarker = null;
+        draw();
+    });
+}
 
 if (filterBoerderijen) {
     filterBoerderijen.addEventListener("change", function () {
@@ -382,5 +422,13 @@ if (filterWeidevogels) {
         filters.vogel = filterWeidevogels.checked;
         hoveredMarker = null;
         draw();
+    });
+}
+
+const switchPerspective = document.querySelector("#switchPerspective");
+
+if (switchPerspective) {
+    switchPerspective.addEventListener("click", function () {
+        window.location.href = "kaart-grutto.html";
     });
 }
