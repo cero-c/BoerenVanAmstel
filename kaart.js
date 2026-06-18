@@ -23,7 +23,7 @@ markerBackgrounds.groot.src = "images/groot-achtergrond.png";
 
 const markers = [
     {
-        x: 0.50,
+        x: 0.60,
         y: 0.42,
         type: "boerderij",
         featured: true,
@@ -64,6 +64,10 @@ let startX = 0;
 let startY = 0;
 
 let hoveredMarker = null;
+const filters = {
+    boerderij: true,
+    vogel: true
+};
 
 
 function resizeCanvas() {
@@ -146,6 +150,7 @@ function draw() {
     );
 
     markers.forEach(marker => {
+        if (!filters[marker.type]) return;
         const markerImage = markerImages[marker.type];
 
         const backgroundImage = marker.featured
@@ -268,6 +273,7 @@ canvas.addEventListener("mousemove", function (event) {
     markers.forEach(marker => {
 
         if (!marker.featured) return;
+        if (!filters[marker.type]) return;
 
         const baseScale = getBaseScale();
         const markerScale = scale / baseScale;
@@ -298,6 +304,7 @@ canvas.addEventListener("click", function (event) {
 
     markers.forEach(marker => {
         if (!marker.featured) return;
+        if (!filters[marker.type]) return;
 
         const baseScale = getBaseScale();
         const markerScale = scale / baseScale;
@@ -337,3 +344,43 @@ function animate() {
 }
 
 animate();
+
+
+const openBtn = document.querySelector("#openMenuBtn");
+const closeBtn = document.querySelector("#closeMenuBtn");
+const overlay = document.querySelector("#filterOverlay");
+
+if (openBtn && closeBtn && overlay) {
+    openBtn.addEventListener("click", function () {
+        overlay.classList.add("is-active");
+    });
+
+    closeBtn.addEventListener("click", function () {
+        overlay.classList.remove("is-active");
+    });
+
+    overlay.addEventListener("click", function (event) {
+        if (event.target === overlay) {
+            overlay.classList.remove("is-active");
+        }
+    });
+}
+
+const filterBoerderijen = document.querySelector("#filterBoerderijen");
+const filterWeidevogels = document.querySelector("#filterWeidevogels");
+
+if (filterBoerderijen) {
+    filterBoerderijen.addEventListener("change", function () {
+        filters.boerderij = filterBoerderijen.checked;
+        hoveredMarker = null;
+        draw();
+    });
+}
+
+if (filterWeidevogels) {
+    filterWeidevogels.addEventListener("change", function () {
+        filters.vogel = filterWeidevogels.checked;
+        hoveredMarker = null;
+        draw();
+    });
+}
