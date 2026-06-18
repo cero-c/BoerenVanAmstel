@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BvA-Kaart van Amsterdam en Amstelland</title>
+    <link rel="stylesheet" href="style-tutorial.css">
+</head>
+<body>
+
+    <section id="begin-scherm" class="screen" style="display: block; cursor: pointer;">
+        <img src="images/kaartGruttoPers.png" class="map-bg">
+    
+        <img src="images/wolk1.png" class="cloud cloud-1">
+        <img src="images/wolk2.png" class="cloud cloud-2">
+        <img src="images/wolk3.png" class="cloud cloud-3">
+        <img src="images/wolk4.png" class="cloud cloud-4">
+        <img src="images/wolk5.png" class="cloud cloud-5">
+        <img src="images/wolk6.png" class="cloud cloud-6">
+        <img src="images/wolk7.png" class="cloud cloud-7">
+        <img src="images/wolk8.png" class="cloud cloud-8">
+        <img src="images/wolk9.png" class="cloud cloud-9">
+        
+        <div class="logo-container">
+            <img src="images/bva-logo-blauw.png" alt="Logo">
+        </div>
+        <img src="images/gruttoBeginScherm.png" class="bird">
+    </section>
+
+    <section id="video-scherm" class="screen" style="display: none;">
+        <video id="intro-video" width="100%" height="100%" onended="showTutorial()">
+            <source src="videos/gruttoVliegEffect.mp4" type="video/mp4">
+        </video>
+    </section>
+
+    <section id="tutorial-scherm" class="screen" style="display: none;">
+        <img src="images/kaartGruttoPers.png" class="map-bg">
+    
+        <nav class="side-navbar">
+            <div class="nav-top">
+                <img src="images/hamburgermenu.png" class="menu-icon" id="openMenuBtn" alt="Menu">
+            </div>
+
+            <div class="nav-bottom">
+                <img src="images/gruttoPersOptie.png" class="nav-btn" alt="Bird">
+                <img src="images/settings.png" class="nav-btn" alt="Settings">
+                <img src="images/info.png" class="nav-btn" alt="Info">
+            </div>
+        </nav>
+    
+        <div id="markers-container" style="display: none;">
+            <img src="images/boerderijIcoontje.png" class="map-marker" style="top: 55%; left: 25%;">
+            <img src="images/gruttoIcoontje.png" class="map-marker" style="top: 50%; left: 45%;">
+            
+            <div id="step3-markers" style="display: none;">
+                <img src="images/boerderijIcoontje.png" class="map-marker" style="top: 30%; left: 50%;">
+                <img src="images/boerderijIcoontje.png" class="map-marker" style="top: 75%; left: 15%;">
+                <img src="images/boerderijIcoontje.png" class="map-marker" style="top: 78%; left: 45%;">
+                <img src="images/gruttoIcoontje.png" class="map-marker" style="top: 85%; left: 25%;">
+                <img src="images/gruttoIcoontje.png" class="map-marker" style="top: 65%; left: 55%;">
+            </div>
+        </div>
+    
+        <div class="tutorial-wrapper">
+            <img src="images/tutorialTextbox.png" class="tutorial-bg-img" alt="Balon">            
+            <div class="tutorial-content">
+                <div class="text-wrapper">
+                    <h3 id="tut-title" class="title-dark">Hoi, ik ben Grutto!<br>Welkom in Amstelland.</h3>
+                    <p id="tut-text-1">Op deze kaart ontdek je hoe boeren, natuur en weidevogels met elkaar verbonden zijn.</p>
+                    <p id="tut-text-2">Scroll over de kaart en verken het gebied.</p>
+                </div>
+                
+                <span id="tut-step" class="step-indicator">1/3</span>
+                
+                <div class="button-group">
+                    <button id="btn-skip-terug" class="btn-skip">Skip</button>
+                    <button id="btn-verder" class="btn-next">Verder</button>                
+                </div>
+
+                <button id="btn-terug-small" class="btn-terug-small" style="display: none;">Terug</button>
+            
+            </div>
+        </div>
+    
+        <img src="images/wolkAchterLogo.png" class="wolkAchterLogo">
+        <img src="images/bva-logo-blauw.png" class="logoKaart">
+
+        <img src="images/tutorialGrutto.png" class="grutto-char">
+        <img src="images/wolkstand.png" class="wolkstand">
+    </section>
+    <aside class="filter-menu-overlay" id="filterOverlay">
+        <div class="filter-menu-container">
+
+            <div class="filter-menu-header">
+                <h2>Ontdek Amstelgebied</h2>
+                <button class="filter-close-btn" id="closeMenuBtn" aria-label="Sluiten">&times;</button>
+            </div>
+
+            <div class="filter-options-list">
+
+                <div class="filter-option-item">
+                    <div class="filter-icon-shape">
+                        <img src="images/boerderij-menu.png" alt="Boerderijen" class="filter-icon-img">
+                    </div>
+                    <div class="filter-item-text">
+                        <h3>Boerderijen</h3>
+                        <p>Ontdek de boeren achter Boeren van Amstel.</p>
+                    </div>
+                    <label class="filter-custom-checkbox">
+                        <input type="checkbox" id="filterBoerderijen" checked>
+                        <span class="filter-checkmark"></span>
+                    </label>
+                </div>
+
+                <div class="filter-option-item">
+                    <div class="filter-icon-shape">
+                        <img src="images/weidevogelgebieden-menu.png" alt="Weidevogelgebieden" class="filter-icon-img">
+                    </div>
+                    <div class="filter-item-text">
+                        <h3>Weidevogelgebieden</h3>
+                        <p>Ontdek waar de weidevogels wonen.</p>
+                    </div>
+                    <label class="filter-custom-checkbox">
+                        <input type="checkbox" id="filterWeidevogels" checked>
+                        <span class="filter-checkmark"></span>
+                    </label>
+                </div>
+
+                <div class="filter-option-item">
+                    <div class="filter-icon-shape">
+                        <img src="images/horeca-menu.png" alt="Horeca & Partners" class="filter-icon-img">
+                    </div>
+                    <div class="filter-item-text">
+                        <h3>Horeca & Partners</h3>
+                        <p><span class="switchText">Switch naar Boer perspectief</span> om te zien welke bedrijven die bijdragen aan natuurherstel.</p>
+                    </div>
+                    <label class="filter-custom-checkbox">
+                        <input type="checkbox" disabled>
+                        <span class="filter-checkmark"></span>
+                    </label>
+                </div>
+
+                <div class="filter-option-item">
+                    <div class="filter-icon-shape">
+                        <img src="images/verkooppunten-menu.png" alt="Verkooppunten" class="filter-icon-img">
+                    </div>
+                    <div class="filter-item-text">
+                        <h3>Verkooppunten</h3>
+                        <p><span class="switchText">Switch naar Boer perspectief</span>  om verkooppunten te zien</p>
+                    </div>
+                    <label class="filter-custom-checkbox">
+                        <input type="checkbox" disabled>
+                        <span class="filter-checkmark"></span>
+                    </label>
+                </div>
+
+                <div class="filter-option-item filter-toggle-item">
+                    <div class="filter-icon-shape no-bg">
+                        <img src="images/spelletje-menu.png" alt="Spelmodus" class="filter-icon-img filter-img-large">
+                    </div>
+                    <div class="filter-item-text">
+                        <h3>Spelmodus</h3>
+                    </div>
+                    <label class="filter-switch">
+                        <input type="checkbox">
+                        <span class="filter-slider"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <hr class="filter-menu-divider">
+
+            <div class="filter-menu-footer">
+
+                <div class="filter-footer-row">
+                    <div class="filter-footer-text">
+                        <h3>Het Grutto perspectief</h3>
+                        <p>Of kies het boer perspectief</p>
+                    </div>
+                    <img src="images/gruttoPersOptie.png" id="switchPerspective" alt="Grutto" class="filter-footer-bird-img">
+                </div>
+
+                <div class="filter-footer-row filter-settings-row">
+                    <div class="filter-setting-control">
+                        <span>Geluid</span>
+                        <label class="filter-switch filter-switch-small">
+                            <input type="checkbox">
+                            <span class="filter-slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="filter-setting-control">
+                        <span>Taal: <strong>NL</strong></span>
+                    </div>
+
+                    <button class="filter-icon-btn" aria-label="Instellingen">
+                        <img src="images/settings.png" alt="Instellingen" class="filter-footer-mini-img">
+                    </button>
+                </div>
+
+                <div class="filter-footer-row filter-credits-row">
+                    <span class="filter-credits">Gemaakt door Mier en Krekel</span>
+                    <button class="filter-icon-btn" aria-label="Informatie">
+                        <img src="images/info-menu.png" alt="Informatie" class="filter-footer-mini-img">
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </aside>
+
+    <script src="kaart-grutto.js"></script>
+</body>
+</html>
