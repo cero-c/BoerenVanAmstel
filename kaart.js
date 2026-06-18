@@ -23,28 +23,34 @@ markerBackgrounds.groot.src = "images/groot-achtergrond.png";
 
 const markers = [
     {
-        x: 0.23,
-        y: 0.28,
+        x: 0.50,
+        y: 0.42,
         type: "boerderij",
         featured: true,
-        text: "Klik op mij en ontdek het verhaal van de boeren!"
+        text: "Klik op mij en ontdek het verhaal van de boeren!",
+        link: "index.html",
+        hoverScale: 1
     },
     {
-        x: 0.37,
-        y: 0.18,
+        x: 0.39,
+        y: 0.45,
         type: "vogel",
         featured: true,
-        text: "Klik op mij en ontdek de weidevogelgebieden!"
+        text: "Klik op mij en ontdek de weidevogelgebieden!",
+        link: "index.html",
+        hoverScale: 1
     },
 
-    { x: 0.68, y: 0.25, type: "boerderij" },
-    { x: 0.14, y: 0.50, type: "boerderij" },
-    { x: 0.25, y: 0.62, type: "boerderij" },
-    { x: 0.17, y: 0.88, type: "boerderij" },
+    { x: 0.30, y: 0.62, type: "boerderij" },
+    { x: 0.42, y: 0.68, type: "boerderij" },
+    { x: 0.56, y: 0.64, type: "boerderij" },
+    { x: 0.66, y: 0.72, type: "boerderij" },
+    { x: 0.48, y: 0.82, type: "boerderij" },
 
-    { x: 0.58, y: 0.52, type: "vogel" },
-    { x: 0.55, y: 0.72, type: "vogel" },
-    { x: 0.39, y: 0.92, type: "vogel" }
+    { x: 0.34, y: 0.75, type: "vogel" },
+    { x: 0.52, y: 0.73, type: "vogel" },
+    { x: 0.61, y: 0.84, type: "vogel" },
+    { x: 0.43, y: 0.90, type: "vogel" }
 ];
 
 let scale = 1;
@@ -56,6 +62,8 @@ let offsetY = 0;
 let isDragging = false;
 let startX = 0;
 let startY = 0;
+
+let hoveredMarker = null;
 
 
 function resizeCanvas() {
@@ -144,35 +152,64 @@ function draw() {
             ? markerBackgrounds.groot
             : markerBackgrounds.klein;
 
-        if (!markerImage.complete || !backgroundImage.complete) return;
+
+        if (marker.hoverScale === undefined) {
+            marker.hoverScale = 1;
+        }
+
+        if (hoveredMarker === marker) {
+            marker.hoverScale += (1.1 - marker.hoverScale) * 0.15;
+        } else {
+            marker.hoverScale += (1 - marker.hoverScale) * 0.15;
+        }
 
         const baseScale = getBaseScale();
         const markerScale = scale / baseScale;
 
+        const isHovered = hoveredMarker === marker;
         const backgroundSize = marker.featured
-            ? 180 * markerScale
-            : 90 * markerScale;
-
+            ? 180 * markerScale * marker.hoverScale
+            : 70 * markerScale;
         const markerSize = marker.featured
-            ? 90 * markerScale
-            : 50 * markerScale;
+            ? 110 * markerScale * marker.hoverScale
+            : 60 * markerScale;
+
 
         const x = offsetX + marker.x * mapImage.width * scale;
         const y = offsetY + marker.y * mapImage.height * scale;
 
+        const bubbleY = marker.featured
+            ? y - 20 * markerScale - ((marker.hoverScale - 1) * 100)
+            : y;
         // achtergrond
         ctx.drawImage(
             backgroundImage,
             x - backgroundSize / 2,
-            y - backgroundSize / 2,
+            bubbleY - backgroundSize / 2,
             backgroundSize,
             backgroundSize
         );
 
+        // tekst
+        if (marker.featured && marker.text) {
+            ctx.fillStyle = "#173B8F";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.font = `${15 * markerScale}px sans-serif`;
+
+            wrapText(
+                marker.text,
+                x,
+                bubbleY - 55 * markerScale,
+                135 * markerScale,
+                18 * markerScale
+            );
+        }
+
         // marker icoon
         const iconY = marker.featured
-            ? y + 35 * markerScale
-            : y;
+            ? y + 30 * markerScale
+            : y - 8 * markerScale;
 
         ctx.drawImage(
             markerImage,
@@ -181,23 +218,8 @@ function draw() {
             markerSize,
             markerSize
         );
-
-        // tekst voor grote markers
-        if (marker.featured && marker.text) {
-            ctx.fillStyle = "#173B8F";
-            ctx.textAlign = "center";
-            ctx.textBaseline = "middle";
-            ctx.font = `bold ${16 * markerScale}px sans-serif`;
-
-            wrapText(
-                marker.text,
-                x,
-                y - 45 * markerScale,
-                140 * markerScale,
-                20 * markerScale
-            );
-        }
-    })};
+    });
+}
 
 
 canvas.addEventListener("wheel", function (event) {
@@ -232,22 +254,72 @@ canvas.addEventListener("mousedown", function (event) {
 });
 
 canvas.addEventListener("mousemove", function (event) {
-    if (!isDragging) return;
 
-    offsetX = event.clientX - startX;
-    offsetY = event.clientY - startY;
+    if (isDragging) {
+        offsetX = event.clientX - startX;
+        offsetY = event.clientY - startY;
 
-    limitDrag();
-    draw();
+        limitDrag();
+        return;
+    }
+
+    hoveredMarker = null;
+
+    markers.forEach(marker => {
+
+        if (!marker.featured) return;
+
+        const baseScale = getBaseScale();
+        const markerScale = scale / baseScale;
+
+        const backgroundSize = 180 * markerScale * marker.hoverScale;
+
+        const x = offsetX + marker.x * mapImage.width * scale;
+        const y = offsetY + marker.y * mapImage.height * scale;
+
+        const bubbleY = y - 20 * markerScale;
+
+        if (
+            event.clientX >= x - backgroundSize / 2 &&
+            event.clientX <= x + backgroundSize / 2 &&
+            event.clientY >= bubbleY - backgroundSize / 2 &&
+            event.clientY <= bubbleY + backgroundSize / 2
+        ) {
+            hoveredMarker = marker;
+        }
+    });
+
+    canvas.style.cursor = hoveredMarker ? "pointer" : "grab";
 });
 
-canvas.addEventListener("mouseup", function () {
-    isDragging = false;
+canvas.addEventListener("click", function (event) {
+    const clickX = event.clientX;
+    const clickY = event.clientY;
+
+    markers.forEach(marker => {
+        if (!marker.featured) return;
+
+        const baseScale = getBaseScale();
+        const markerScale = scale / baseScale;
+
+        const backgroundSize = 180 * markerScale;
+
+        const x = offsetX + marker.x * mapImage.width * scale;
+        const y = offsetY + marker.y * mapImage.height * scale;
+
+        const bubbleY = y - 20 * markerScale;
+
+        if (
+            clickX >= x - backgroundSize / 2 &&
+            clickX <= x + backgroundSize / 2 &&
+            clickY >= bubbleY - backgroundSize / 2 &&
+            clickY <= bubbleY + backgroundSize / 2
+        ) {
+            window.location.href = marker.link;
+        }
+    });
 });
 
-canvas.addEventListener("mouseleave", function () {
-    isDragging = false;
-});
 
 mapImage.onload = resizeCanvas;
 
@@ -258,3 +330,10 @@ markerBackgrounds.klein.onload = draw;
 markerBackgrounds.groot.onload = draw;
 
 window.addEventListener("resize", resizeCanvas);
+
+function animate() {
+    draw();
+    requestAnimationFrame(animate);
+}
+
+animate();
