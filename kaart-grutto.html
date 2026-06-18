@@ -16,8 +16,9 @@
     <main>
         <nav class="side-navbar">
             <div class="nav-top">
-                <img src="images/hamburgermenu.png" class="menu-icon" alt="Menu">
+                <img src="images/hamburgermenu.png" class="menu-icon" id="openMenuBtn" alt="Menu">
             </div>
+
             <div class="nav-bottom">
                 <img src="images/gruttoPersOptie.png" class="nav-btn" alt="Bird">
                 <img src="images/settings.png" class="nav-btn" alt="Settings">
@@ -29,6 +30,128 @@
     <footer>
         <button class="donate-button">Doneer</button>
     </footer>
+    <aside class="filter-menu-overlay" id="filterOverlay">
+        <div class="filter-menu-container">
+
+            <div class="filter-menu-header">
+                <h2>Ontdek Amstelgebied</h2>
+                <button class="filter-close-btn" id="closeMenuBtn" aria-label="Sluiten">&times;</button>
+            </div>
+
+            <div class="filter-options-list">
+
+                <div class="filter-option-item">
+                    <div class="filter-icon-shape">
+                        <img src="images/boerderij-menu.png" alt="Boerderijen" class="filter-icon-img">
+                    </div>
+                    <div class="filter-item-text">
+                        <h3>Boerderijen</h3>
+                        <p>Ontdek de boeren achter Boeren van Amstel.</p>
+                    </div>
+                    <label class="filter-custom-checkbox">
+                        <input type="checkbox" id="filterBoerderijen" checked>
+                        <span class="filter-checkmark"></span>
+                    </label>
+                </div>
+
+                <div class="filter-option-item">
+                    <div class="filter-icon-shape">
+                        <img src="images/weidevogelgebieden-menu.png" alt="Weidevogelgebieden" class="filter-icon-img">
+                    </div>
+                    <div class="filter-item-text">
+                        <h3>Weidevogelgebieden</h3>
+                        <p>Ontdek waar de weidevogels wonen.</p>
+                    </div>
+                    <label class="filter-custom-checkbox">
+                        <input type="checkbox" id="filterWeidevogels" checked>
+                        <span class="filter-checkmark"></span>
+                    </label>
+                </div>
+
+                <div class="filter-option-item">
+                    <div class="filter-icon-shape">
+                        <img src="images/horeca-menu.png" alt="Horeca & Partners" class="filter-icon-img">
+                    </div>
+                    <div class="filter-item-text">
+                        <h3>Horeca & Partners</h3>
+                        <p>Ontdek de bedrijven die bijdragen aan natuurherstel.</p>
+                    </div>
+                    <label class="filter-custom-checkbox">
+                        <input type="checkbox">
+                        <span class="filter-checkmark"></span>
+                    </label>
+                </div>
+
+                <div class="filter-option-item">
+                    <div class="filter-icon-shape">
+                        <img src="images/verkooppunten-menu.png" alt="Verkooppunten" class="filter-icon-img">
+                    </div>
+                    <div class="filter-item-text">
+                        <h3>Verkooppunten</h3>
+                        <p>Bekijk waar je producten van Boeren van Amstel kunt vinden.</p>
+                    </div>
+                    <label class="filter-custom-checkbox">
+                        <input type="checkbox">
+                        <span class="filter-checkmark"></span>
+                    </label>
+                </div>
+
+                <div class="filter-option-item filter-toggle-item">
+                    <div class="filter-icon-shape no-bg">
+                        <img src="images/spelletje-menu.png" alt="Spelmodus" class="filter-icon-img filter-img-large">
+                    </div>
+                    <div class="filter-item-text">
+                        <h3>Spelmodus</h3>
+                    </div>
+                    <label class="filter-switch">
+                        <input type="checkbox">
+                        <span class="filter-slider"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <hr class="filter-menu-divider">
+
+            <div class="filter-menu-footer">
+
+                <div class="filter-footer-row">
+                    <div class="filter-footer-text">
+                        <h3>Het Grutto perspectief</h3>
+                        <p>Of kies het boer perspectief</p>
+                    </div>
+                    <img src="images/gruttoPersOptie.png" alt="Grutto" class="filter-footer-bird-img">
+                </div>
+
+                <div class="filter-footer-row filter-settings-row">
+                    <div class="filter-setting-control">
+                        <span>Geluid</span>
+                        <label class="filter-switch filter-switch-small">
+                            <input type="checkbox">
+                            <span class="filter-slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="filter-setting-control">
+                        <span>Taal: <strong>NL</strong></span>
+                    </div>
+
+                    <button class="filter-icon-btn" aria-label="Instellingen">
+                        <img src="images/settings.png" alt="Instellingen" class="filter-footer-mini-img">
+                    </button>
+                </div>
+
+                <div class="filter-footer-row filter-credits-row">
+                    <span class="filter-credits">Gemaakt door Mier en Krekel</span>
+                    <button class="filter-icon-btn" aria-label="Informatie">
+                        <img src="images/info-menu.png" alt="Informatie" class="filter-footer-mini-img">
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </aside>
+
     <script src="kaart.js"></script>
 </body>
 
