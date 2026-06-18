@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testpagina - Filter Menu Amstelgebied</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <button class="test-open-btn" id="openMenuBtn">Klik om filtermenu te testen</button>
+
+    <aside class="filter-menu-overlay" id="filterOverlay">
+        <div class="filter-menu-container">
+            
+            <div class="filter-menu-header">
+                <h2>Ontdek Amstelgebied</h2>
+                <button class="filter-close-btn" id="closeMenuBtn" aria-label="Sluiten">&times;</button>
+            </div>
+
+            <div class="filter-options-list">
+                
+                <div class="filter-option-item">
+                    <div class="filter-icon-shape">
+                        <img src="images/boerderij.png" alt="Boerderijen" class="filter-icon-img">
+                    </div>
+                    <div class="filter-item-text">
+                        <h3>Boerderijen</h3>
+                        <p>Ontdek de boeren achter Boeren van Amstel.</p>
+                    </div>
+                    <label class="filter-custom-checkbox">
+                        <input type="checkbox">
+                        <span class="filter-checkmark"></span>
+                    </label>
+                </div>
+
+                <div class="filter-option-item">
+                    <div class="filter-icon-shape">
+                        <img src="images/weidevogelgebieden.png" alt="Weidevogelgebieden" class="filter-icon-img">
+                    </div>
+                    <div class="filter-item-text">
+                        <h3>Weidevogelgebieden</h3>
+                        <p>Ontdek waar de weidevogels wonen.</p>
+                    </div>
+                    <label class="filter-custom-checkbox">
+                        <input type="checkbox">
+                        <span class="filter-checkmark"></span>
+                    </label>
+                </div>
+
+                <div class="filter-option-item">
+                    <div class="filter-icon-shape">
+                        <img src="images/horeca.png" alt="Horeca & Partners" class="filter-icon-img">
+                    </div>
+                    <div class="filter-item-text">
+                        <h3>Horeca & Partners</h3>
+                        <p>Ontdek de bedrijven die bijdragen aan natuurherstel.</p>
+                    </div>
+                    <label class="filter-custom-checkbox">
+                        <input type="checkbox">
+                        <span class="filter-checkmark"></span>
+                    </label>
+                </div>
+
+                <div class="filter-option-item">
+                    <div class="filter-icon-shape">
+                        <img src="images/verkooppunten.png" alt="Verkooppunten" class="filter-icon-img">
+                    </div>
+                    <div class="filter-item-text">
+                        <h3>Verkooppunten</h3>
+                        <p>Bekijk waar je producten van Boeren van Amstel kunt vinden.</p>
+                    </div>
+                    <label class="filter-custom-checkbox">
+                        <input type="checkbox">
+                        <span class="filter-checkmark"></span>
+                    </label>
+                </div>
+
+                <div class="filter-option-item filter-toggle-item">
+                    <div class="filter-icon-shape no-bg">
+                        <img src="images/spelle" alt="Spelmodus" class="filter-icon-img filter-img-large">
+                    </div>
+                    <div class="filter-item-text">
+                        <h3>Spelmodus</h3>
+                    </div>
+                    <label class="filter-switch">
+                        <input type="checkbox">
+                        <span class="filter-slider"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <hr class="filter-menu-divider">
+
+            <div class="filter-menu-footer">
+                
+                <div class="filter-footer-row">
+                    <div class="filter-footer-text">
+                        <h3>Het Grutto perspectief</h3>
+                        <p>Of kies het boer perspectief</p>
+                    </div>
+                    <img src="images/icoon-grutto.png" alt="Grutto" class="filter-footer-bird-img">
+                </div>
+
+                <div class="filter-footer-row filter-settings-row">
+                    <div class="filter-setting-control">
+                        <span>Geluid</span>
+                        <label class="filter-switch filter-switch-small">
+                            <input type="checkbox">
+                            <span class="filter-slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="filter-setting-control">
+                        <span>Taal: <strong>NL</strong></span>
+                    </div>
+
+                    <button class="filter-icon-btn" aria-label="Instellingen">
+                        <img src="images/icoon-tandwiel.png" alt="Instellingen" class="filter-footer-mini-img">
+                    </button>
+                </div>
+
+                <div class="filter-footer-row filter-credits-row">
+                    <span class="filter-credits">Gemaakt door Mier en Krekel</span>
+                    <button class="filter-icon-btn" aria-label="Informatie">
+                        <img src="images/icoon-info.png" alt="Informatie" class="filter-footer-mini-img">
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </aside>
+
+    <script>
+        const openBtn = document.getElementById('openMenuBtn');
+        const closeBtn = document.getElementById('closeMenuBtn');
+        const overlay = document.getElementById('filterOverlay');
+
+        openBtn.addEventListener('click', () => {
+            overlay.classList.add('is-active');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            overlay.classList.remove('is-active');
+        });
+
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+                overlay.classList.remove('is-active');
+            }
+        });
+    </script>
+
+</body>
+</html>
