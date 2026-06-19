@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verhaal van de Boeren van Amstel</title>
+    <link rel="stylesheet" href="boerpers.css">
+</head>
+
+<body>
+
+    <img src="images/kaartGruttoPers.png" class="map-bg" alt="Kaart Achtergrond">
+
+    <nav class="side-navbar">
+        <div class="nav-top">
+            <img src="images/hamburgermenu.png" class="menu-icon" alt="Menu">
+        </div>
+        <div class="nav-bottom">
+            <img src="images/boerPersOptie.svg" class="nav-btn" alt="Boer">
+            <img src="images/settings.png" class="nav-btn" alt="Settings">
+            <img src="images/info.png" class="nav-btn" alt="Info">
+        </div>
+    </nav>
+
+    <div class="doneer-flap">Doneer</div>
+
+    <img src="images/wolkAchterLogo.png" class="wolkAchterLogo">
+    <img src="images/bva-logo-blauw.png" class="logoKaart">
+
+    <section class="content-overlay">
+        <div class="dome-container">
+
+            <img src="images/groteWolkTextbox.png" class="dome-bg" alt="Achtergrond">
+            <img src="images/sluitButton.png" class="close-png" alt="Sluiten"
+                onclick="window.location.href='kaart-boer.html'">
+            <div class="title-wrapper">
+                <h2 id="boer-title" class="title-blue">Verhaal van de Boeren van Amstel</h2>
+            </div>
+
+            <div id="step-1" class="boer-step" style="display: flex;">
+                <div class="video-container">
+                    <video class="video-player" controls poster="images/tumpnail2.png">
+                        <source
+                            src="Video/Inzaaien biodiversiteit Bovenkerkerpolder Nes aan de Amstel Amstelveen - Boeren van Amstel TV (1080p).mp4"
+                            type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="button-row">
+                    <button class="btn-terug" onclick="console.log('Ana menüye dön')">Terug</button>
+                    <button class="btn-action" onclick="goToBoerStep(2)">Ontdek hoe jij vandaag<br>kunt bijdragen aan
+                        natuurherstel</button>
+                </div>
+            </div>
+
+            <div id="step-2" class="boer-step" style="display: none;">
+                <div class="video-container">
+                    <video class="video-player" controls poster="images/figmaVideoPoster.png">
+                        <source src="" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="button-row">
+                    <button class="btn-terug" onclick="goToBoerStep(1)">Terug</button>
+                    <button class="btn-action single-line">Ontdek locaties</button>
+                </div>
+            </div>
+
+            <img src="images/boerAvatar.png" class="bottom-avatar" alt="Boer Avatar">
+
+        </div>
+    </section>
+
+    <script>
+        function goToBoerStep(stepNumber) {
+            document.getElementById('step-1').style.display = 'none';
+            document.getElementById('step-2').style.display = 'none';
+
+            document.getElementById('step-' + stepNumber).style.display = 'flex';
+
+            const titleObj = document.getElementById('boer-title');
+            if (stepNumber === 1) {
+                titleObj.innerText = "Verhaal van de Boeren van Amstel";
+            } else if (stepNumber === 2) {
+                titleObj.innerText = "Herstellen van slootranden";
+            }
+        }
+    </script>
+
+</body>
+
+</html>

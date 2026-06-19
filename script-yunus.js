@@ -1,15 +1,10 @@
-// ==========================================
-// ORTAK DEĞİŞKENLER
-// ==========================================
-let currentStep = 1; // Tutorial için adım hafızası
-let selectedAmount = '5'; // Varsayılan tutar
-let selectedFrequency = 'eenmalige'; // YENİ: Varsayılan sıklık (Eenmalig -> eenmalige)
 
+let currentStep = 1; 
+let selectedAmount = '5'; 
+let selectedFrequency = 'eenmalige'; 
 document.addEventListener('DOMContentLoaded', () => {
     
-    // ==========================================
-    // 1. VİDEO VE BAŞLANGIÇ EKRANI (Tutorial)
-    // ==========================================
+   
     const beginScherm = document.getElementById('begin-scherm');
     if (beginScherm) {
         beginScherm.addEventListener('click', startVideo);
@@ -24,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
         video.addEventListener('ended', showTutorial);
     }
 
-    // Tutorial Butonları
     const btnVerder = document.getElementById('btn-verder');
     const btnSkipTerug = document.getElementById('btn-skip-terug');
     const btnTerugSmall = document.getElementById('btn-terug-small');
@@ -51,20 +45,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ==========================================
-    // 2. DONEREN (BAĞIŞ) SAYFASI ETKİLEŞİMLERİ
-    // ==========================================
-    
-    // --- Sekmeler (Tabs) Seçimi ve Hafızaya Alma ---
     const tabs = document.querySelectorAll('.tab');
     if (tabs.length > 0) {
         tabs.forEach(tab => {
             tab.addEventListener('click', function() {
-                // Görsel olarak aktif olanı değiştir
+                
                 tabs.forEach(t => t.classList.remove('active'));
                 this.classList.add('active');
                 
-                // YENİ: Hangi sekmenin seçildiğini bul ve dilbilgisine (Felemenkçe) uyarla
+                
                 const tabText = this.innerText.trim().toLowerCase();
                 if (tabText === 'eenmalig') {
                     selectedFrequency = 'eenmalige';
@@ -77,23 +66,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Miktar Butonları ve Overlay ---
+
     const amountBtns = document.querySelectorAll('.amount-btn');
     const overlay = document.getElementById('impact-overlay');
     const impactImage = document.getElementById('impact-image');
     
     if (amountBtns.length > 0) {
         amountBtns.forEach(btn => {
-            // TIKLAMA: Seçimi kaydet ve butonu aktif yap
+  
             btn.addEventListener('click', function() {
                 amountBtns.forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
                 
-                // Seçilen değeri hafızaya al
+      
                 selectedAmount = this.getAttribute('data-amount'); 
             });
 
-            // MOUSE ÜZERİNE GELİNCE: Resmi göster
+            
             btn.addEventListener('mouseenter', function() {
                 const amount = this.getAttribute('data-amount'); 
                 if (impactImage) {
@@ -104,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // MOUSE ÜZERİNDEN ÇIKINCA: Resmi gizle
+           
             btn.addEventListener('mouseleave', function() {
                 if (overlay) {
                     overlay.style.display = 'none';
@@ -113,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Overlay Kapatma ---
+
     if (overlay) {
         overlay.addEventListener('click', function() {
             overlay.style.display = 'none';
@@ -129,11 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// ==========================================
-// FONKSİYONLAR (Global)
-// ==========================================
 
-// --- Tutorial Geçişleri ---
 function startVideo() {
     document.getElementById('begin-scherm').style.display = 'none';
     document.getElementById('video-scherm').style.display = 'block';
@@ -160,7 +145,7 @@ function updateStep(step) {
     const step3Markers = document.getElementById('step3-markers');
     const btnTerugSmall = document.getElementById('btn-terug-small');
 
-    if (!title) return; // Tutorial sayfasında değilsek kodu kırma
+    if (!title) return;
 
     if (step === 1) {
         title.style.display = 'block';
@@ -200,7 +185,7 @@ function updateStep(step) {
     }
 }
 
-// --- Doneren (Bağış) Adım Geçişleri ---
+
 function goToStep(stepNumber) {
     const allSteps = [0, 1, 2, 3, 4];
     allSteps.forEach(i => {
@@ -215,7 +200,6 @@ function goToStep(stepNumber) {
         targetStep.style.display = 'flex';
     }
 
-    // 3. Başlığı Güncelle
     const titleObj = document.getElementById('doneren-title');
     if (titleObj) {
         if (stepNumber === 4) {
@@ -225,7 +209,7 @@ function goToStep(stepNumber) {
         }
     }
 
-    // YENİ: ADIM 3'e geçiliyorsa başlığa hem SIKLIĞI hem de MİKTARI yazdır!
+    
     if (stepNumber === 3) {
         const step3Subtitle = document.getElementById('step-3-subtitle');
         if (step3Subtitle) {
@@ -242,7 +226,6 @@ function goToStep(stepNumber) {
         }
     }
 
-    // YENİ: SADECE ADIM 4'TE KONFETİYİ GÖSTER
     const confetti = document.getElementById('confetti-img');
     if (confetti) {
         if (stepNumber === 4) {
@@ -252,53 +235,4 @@ function goToStep(stepNumber) {
         }
     }
 
-}
-
-
-
-const openBtn = document.querySelector("#openMenuBtn");
-const closeBtn = document.querySelector("#closeMenuBtn");
-const overlay = document.querySelector("#filterOverlay");
-
-if (openBtn && closeBtn && overlay) {
-    openBtn.addEventListener("click", function () {
-        overlay.classList.add("is-active");
-    });
-
-    closeBtn.addEventListener("click", function () {
-        overlay.classList.remove("is-active");
-    });
-
-    overlay.addEventListener("click", function (event) {
-        if (event.target === overlay) {
-            overlay.classList.remove("is-active");
-        }
-    });
-}
-
-const filterBoerderijen = document.querySelector("#filterBoerderijen");
-const filterWeidevogels = document.querySelector("#filterWeidevogels");
-
-if (filterBoerderijen) {
-    filterBoerderijen.addEventListener("change", function () {
-        filters.boerderij = filterBoerderijen.checked;
-        hoveredMarker = null;
-        draw();
-    });
-}
-
-if (filterWeidevogels) {
-    filterWeidevogels.addEventListener("change", function () {
-        filters.vogel = filterWeidevogels.checked;
-        hoveredMarker = null;
-        draw();
-    });
-}
-
-const switchPerspective = document.querySelector("#switchPerspective");
-
-if (switchPerspective) {
-    switchPerspective.addEventListener("click", function () {
-        window.location.href = "kaart-boer.html";
-    });
 }

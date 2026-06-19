@@ -1,0 +1,440 @@
+/* =========================================
+   GENEL AYARLAR VE SABİT ELEMANLAR
+========================================= */
+:root {
+    --Be-Vietnam-Pro: "Be Vietnam Pro", sans-serif;
+    --Montserrat: "Montserrat", sans-serif;
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; 
+    font-family: var(--Be-Vietnam-Pro);
+}
+
+.map-bg { 
+    width: 100%;
+    height: 100%; 
+    object-fit: cover; 
+    position: absolute; 
+    z-index: 1; 
+}
+
+/* Sol Menü (Navbar) */
+.side-navbar {
+    position: absolute;
+    left: 0;
+    top: 10%; 
+    height: 80%; 
+    width: 60px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-left: none; 
+    border-radius: 0 30px 30px 0; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 0;
+    z-index: 10;
+    box-shadow: 5px 0 25px rgba(0, 0, 0, 0.1);
+}
+
+.menu-icon, .nav-btn { width: 40px; cursor: pointer; transition: transform 0.2s ease; }
+.menu-icon:hover, .nav-btn:hover { transform: scale(1.1); }
+.nav-bottom { display: flex; flex-direction: column; gap: 20px; }
+.nav-btn { width: 40px; margin-top: 20px; }
+
+/* Harita Üzerindeki İkonlar ve Logo */
+
+.wolkAchterLogo { position: absolute;
+    z-index: 15;
+    top: -12%;
+    left: 85%;
+    width: 300px;}
+.logoKaart { position: absolute; z-index: 15; width: 120px; top: 3%; left: 90%; }
+
+/* Sağ Kenardaki Turuncu Doneer Kulakçığı */
+.doneer-flap {
+    position: absolute;
+    right: 0;
+    bottom: 25%;
+    background: #F1B565; 
+    color: #000;
+    padding: 25px 10px;
+    border-radius: 10px 0 0 10px;
+    font-family: var(--Be-Vietnam-Pro);
+    font-weight: bold;
+    font-size: 1.1rem;
+    writing-mode: vertical-rl; 
+    transform: rotate(180deg); 
+    cursor: pointer;
+    z-index: 20;
+    box-shadow: -3px 0 10px rgba(0,0,0,0.1);
+}
+
+/* =========================================
+   ANA İÇERİK: DOME (YARIM DAİRE) VE BAŞLIK
+========================================= */
+.content-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+}
+
+.dome-container {
+    position: relative;
+    width: 850px; 
+    height: 550px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    margin-top: 50px; 
+}
+
+.dome-bg { position: absolute; top: -17%; left: -17%; width: 1184px; height: 684px; object-fit: contain; z-index: -2; pointer-events: none;}
+.close-png { position: absolute; top: 0; right: 80px; width: 45px; cursor: pointer; z-index: 10; transition: transform 0.2s ease; }
+
+.title-wrapper {
+    position: absolute;
+    top: -60px; 
+    left: 50%;
+    transform: translateX(-50%); 
+    text-align: center;
+    width: 450px;
+    z-index: 10;
+}
+
+.title-blue {
+    color: rgb(42, 58, 112);
+    font-size: 1.3rem;
+    padding: 6rem 0px;
+    background-image: url(images/titelWolk.png);
+    background-size: cover;
+    background-position: center center;
+    margin: -6rem 0px 0px;
+    font-weight: bold;
+}
+
+/* =========================================
+   ADIMLAR (STEP 1 & 2): VİDEO VE BUTONLAR
+========================================= */
+.boer-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 100px; /* Videoyu başlıktan aşağı iter */
+    z-index: 5;
+}
+
+.video-container {
+    width: 580px;
+    height: 315px;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    background: #000; 
+}
+
+.video-player {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Buton Sırası */
+.button-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50em;
+    margin-top: 25px; 
+    z-index: 10;
+}
+
+.btn-terug {
+    background: #283770;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 12px 40px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: var(--Be-Vietnam-Pro);
+    transition: 0.3s;
+}
+
+.btn-action {
+    background: #283770;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    font-family: var(--Be-Vietnam-Pro);
+    line-height: 1.3;
+    transition: 0.3s;
+}
+
+.btn-action.single-line { padding: 12px 40px; }
+.btn-terug:hover, .btn-action:hover { background: #1c2750; transform: scale(1.03); }
+
+/* Ortadaki Çiftçi Avatarı */
+.boer-avatar {
+    position: absolute;
+    bottom: -80px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px; 
+    z-index: 15;
+}
+
+/* İki sütun (Resim ve Yazı) arasını açmak için gap ekliyoruz */
+.split-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch; 
+    height: 100%;
+    margin-top: 4em;
+    gap: 60px; /* <--- İŞTE BURASI ARAYI AÇACAK */
+}
+
+/* =========================================
+   HARİTA POPUP (OVERLAY) TASARIMI
+========================================= */
+.route-wrapper {
+    position: relative;
+    align-self: flex-end;
+    margin-top: auto;
+}
+
+.map-popup {
+    position: absolute;
+    bottom: 130%; /* Ana butonun hemen üstünde belirir */
+    right: 0;
+    background: rgba(255, 255, 255, 0.85); /* Hafif saydam beyaz arka plan */
+    backdrop-filter: blur(10px);
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 50;
+    min-width: 230px;
+    border: 2px solid white;
+}
+
+.map-popup .btn-action {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    margin: 0; /* Ekstra boşlukları sıfırla */
+}
+
+/* Çarpı (Kapatma) Tuşu */
+.close-popup {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #283770;
+    color: white;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+.close-popup:hover {
+    background: #1c2750;
+    transform: scale(1.1);
+}
+
+/* =========================================
+   EKSİK OLAN LOKASYON SAYFASI İSKELET KODLARI
+========================================= */
+/* =========================================
+   LOKASYON BİLGİ SAYFALARI (Polderzicht, Ysbreeker, AH)
+========================================= */
+
+.info-layout {
+    width: 85%;
+    margin-top: 80px; 
+    height: 350px; /* Sabit yükseklik, sütunların tam uzamasını sağlar */
+    display: flex;
+    flex-direction: column;
+    z-index: 5;
+}
+
+.centered-y {
+    justify-content: center;
+}
+
+.intro-center {
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #0b1120;
+    margin-bottom: 30px;
+    padding: 0 20px;
+}
+
+/* Sütunları eşitler ve arayı açar */
+.split-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 100%; /* İçeriği info-layout'un sonuna kadar uzatır */
+    gap: 60px; 
+}
+
+.col-left, .col-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.col-divider {
+    width: 1px;
+    background-color: #2a3a70;
+    margin: 0 10px;
+    opacity: 0.3;
+}
+
+.flex-col {
+    justify-content: flex-start;
+}
+
+.col-right h3 {
+    color: #0b1120;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.text-center { text-align: center; }
+.margin-bot { margin-bottom: 20px; color: #2a3a70; font-size: 1.1rem; }
+
+/* Resim Stilleri (Tam sığması için güncellendi) */
+.fit-img {
+    width: 100%;
+    max-height: 250px;
+    object-fit: contain;
+}
+
+.rounded-img {
+    width: 100%;
+    height: 100%;
+    max-height: 280px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+/* İkonlu Satırlar (AH sayfası) */
+.icon-text-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.small-logo { width: 60px; object-fit: contain; }
+.small-product { width: 80px; object-fit: contain; }
+.icon-text-row p { font-size: 0.9rem; line-height: 1.4; color: #0b1120; }
+
+/* =========================================
+   HARİTA POPUP VE BUTON (TAM ALTA YASLAMA)
+========================================= */
+.route-wrapper {
+    position: relative;
+    align-self: flex-end;
+    margin-top: auto; /* Sütun yüksekliği sabit olduğu için butonu DİBE iter */
+}
+
+.map-popup {
+    position: absolute;
+    bottom: 130%; 
+    right: 0;
+    background: rgba(255, 255, 255, 0.85); 
+    backdrop-filter: blur(10px);
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 50;
+    min-width: 230px;
+    border: 2px solid white;
+}
+
+.map-popup .btn-action {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    margin: 0; 
+}
+
+.close-popup {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #283770;
+    color: white;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+.close-popup:hover {
+    background: #1c2750;
+    transform: scale(1.1);
+}
+
+/* Alt Ortadan Çıkan İkonlar */
+.bottom-avatar {
+    position: absolute;
+    bottom: -60px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110px; 
+    z-index: 15;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2)); 
+}

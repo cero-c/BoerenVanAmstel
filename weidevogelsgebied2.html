@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weidevogelgebied-grutto-2</title>
+    <link rel="stylesheet" href="style-yunus.css">
+</head>
+
+<body>
+    <img src="images/kaartGruttoPers.png" class="map-bg" alt="Kaart Achtergrond">
+
+    <nav class="side-navbar">
+        <div class="nav-top"><img src="images/hamburgermenu.png" class="menu-icon" alt="Menu"></div>
+        <div class="nav-bottom">
+            <img src="images/gruttoPersOptie.svg" class="nav-btn" alt="Bird">
+            <img src="images/settings.png" class="nav-btn" alt="Settings">
+            <img src="images/info.png" class="nav-btn" alt="Info">
+        </div>
+    </nav>
+
+    <img src="images/wolkAchterLogo.png" class="wolkAchterLogo">
+    <img src="images/bva-logo-blauw.png" class="logoKaart">
+
+    <section class="content-overlay">
+        <div class="dome-container">
+            <img src="images/groteWolkTextbox.png" class="dome-bg" alt="Achtergrond">
+            <img src="images/sluitButton.png" class="close-png" alt="Sluiten"
+                onclick="window.location.href='kaart-grutto.html'">
+            <div class="title-wrapper">
+                <h2 class="title-blue">Hoe dragen Boeren van Amstel bij aan natuurherstel?</h2>
+            </div>
+
+            <div class="boer-step" style="display: flex;">
+                <div class="video-container">
+                    <video class="video-player" controls poster="images/tumpnail2.png" autoplay loop playsinline>
+                        <source
+                            src="videos/Inzaaien biodiversiteit Bovenkerkerpolder Nes aan de Amstel Amstelveen - Boeren van Amstel TV (1080p).mp4"
+                            type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="button-row">
+                    <button class="btn-terug" onclick="window.location.href='weidevogelgebied1.html'">Terug</button>
+                    <!-- Bu butona basıldığında Bijdrage sayfasına gider -->
+                    <button class="btn-action" onclick="window.location.href='bijdrage.html'">
+                        Ontdek hoe jij vandaag<br>kunt bijdragen aan natuurherstel
+                    </button>
+                </div>
+            </div>
+
+            <img src="images/gruttoIcoontje.svg" class="bottom-avatar" alt="Grutto">
+        </div>
+    </section>
+</body>
+
+</html>

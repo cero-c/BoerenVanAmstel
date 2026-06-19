@@ -1,0 +1,411 @@
+/* =========================================
+   1. GENEL AYARLAR VE RESET
+========================================= */
+:root {
+    --Be-Vietnam-Pro: "Be Vietnam Pro", sans-serif;
+    --Montserrat: "Montserrat", sans-serif;
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; 
+    font-family: var(--Be-Vietnam-Pro);
+}
+
+p {
+    font-family: var(--Be-Vietnam-Pro);
+}
+
+/* =========================================
+   2. ANA HARİTA VE BAŞLANGIÇ
+========================================= */
+.hero-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.map-bg { 
+    width: 100%;
+    height: 100%; 
+    object-fit: cover; 
+    position: absolute; 
+    z-index: 1; 
+}
+
+.logo-container {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.bird {
+    position: absolute;
+    z-index: 4;
+    height: 300px;
+    width: auto;
+    top: 15%;
+    left: 40%;
+}
+
+.screen {
+    display: none; 
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100vh;
+    overflow: hidden;
+}
+
+#begin-scherm { 
+    display: block;
+    cursor: pointer;
+} 
+
+#intro-video {
+    cursor: pointer; 
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#video-scherm video { width: 100%; height: 100%; object-fit: cover; }
+
+/* =========================================
+   3. SOL NAVBAR VE İKONLAR
+========================================= */
+.side-navbar {
+    position: absolute;
+    left: 0;
+    top: 10%; 
+    height: 80%; 
+    width: 60px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-left: none; 
+    border-radius: 0 30px 30px 0; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 0;
+    z-index: 10;
+    box-shadow: 5px 0 25px rgba(0, 0, 0, 0.1);
+}
+
+.nav-bottom { display: flex; flex-direction: column; gap: 20px; }
+.menu-icon, .nav-btn { width: 40px; cursor: pointer; transition: transform 0.2s ease; }
+.menu-icon:hover, .nav-btn:hover { transform: scale(1.1); }
+.nav-btn { margin-top: 20px; }
+
+.wolkAchterLogo { position: absolute;
+    z-index: 15;
+    top: -12%;
+    left: 85%;
+    width: 300px;}
+.logoKaart { position: absolute; z-index: 15; width: 120px; top: 3%; left: 90%; }
+
+.tutorial-wrapper {
+    position: absolute;
+    top: 10%;
+    right: 11%; 
+    z-index: 10;
+}
+
+.tutorial-bg-img {
+    width: 480px; 
+    height: auto;
+    display: block;
+}
+
+.tutorial-content {
+    position: absolute;
+    top: 45%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    text-align: center;
+    color: #0b1120;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.text-wrapper {
+    height: 140px; 
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    margin-bottom: 5px;
+}
+
+.title-dark { color: #2a3a70; margin-bottom: 8px; font-size: 1.15rem; line-height: 1.2; }
+.tutorial-content p { font-size: 0.9rem; margin-bottom: 6px; line-height: 1.3; }
+.step-indicator { font-weight: bold; color: #666; margin-bottom: 15px; font-size: 0.9rem; }
+.button-group { display: flex; justify-content: center; gap: 15px; }
+
+.btn-skip, .btn-next { background: #364883; color: white; border: 1px solid white; padding: 10px 25px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: background 0.3s; }
+.btn-skip:hover, .btn-next:hover { background: #23315e; }
+
+.btn-terug-small {
+    background: transparent; border: 1px solid #364883; color: #364883; padding: 6px 20px; border-radius: 15px; font-size: 0.85rem; margin-top: 20px; cursor: pointer; font-weight: bold; text-decoration: none; transition: all 0.3s ease;
+}
+.btn-terug-small:hover { background: #364883; color: white; }
+
+.grutto-char { position: absolute; bottom: 5%; right: 5%; width: 300px; z-index: 15; }
+.wolkstand { position: absolute; z-index: 16; bottom: -4%; right: 2%; }
+
+/* Bulut Animasyonları */
+.cloud { position: absolute; z-index: 2; pointer-events: none; animation-timing-function: linear; animation-iteration-count: infinite; }
+.cloud-1 { top: 0%; left: 0%; width: 600px; animation-duration: 90s; animation-name: moveLeft; }
+.cloud-2 { top: 0%; left: 30%; width: 400px; animation-duration: 60s; animation-name: moveLeft; }
+.cloud-3 { top: -12%; left: 40%; width: 550px; animation-duration: 90s; animation-name: moveRight; }
+.cloud-4 { top: 72%; left: 70%; width: 550px; animation-duration: 100s; animation-name: moveLeft; }
+.cloud-5 { top: 73%; left: 10%; width: 850px; animation-duration: 30s; animation-name: moveLeft; }
+.cloud-6 { top: 0%; left: 70%; width: 600px; animation-duration: 60s; animation-name: moveRight; }
+.cloud-7 { top: 30%; left: 70%; width: 500px; animation-duration: 90s; animation-name: moveRight; }
+.cloud-8 { top: 30%; left: 5%; width: 400px; animation-duration: 90s; animation-name: moveLeft; }
+.cloud-9 { top: 25%; left: 28%; width: 850px; animation-duration: 100s; animation-name: moveLeft; }
+
+@keyframes moveRight { 0% { transform: translateX(0vw); } 100% { transform: translateX(40vw); } }
+@keyframes moveLeft { 0% { transform: translateX(0vw); } 100% { transform: translateX(-50vw); } }
+
+/* Harita Markerleri */
+.map-marker { position: absolute; width: 100px; z-index: 5; cursor: pointer; transition: transform 0.2s ease; }
+.map-marker:hover { transform: scale(1.1) translateY(-10px); }
+
+/* =========================================
+   5. ORTAK DOME (YARIM DAİRE) YAPISI
+========================================= */
+.content-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100vh;
+    display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 5;
+}
+
+.dome-container {
+    position: relative; width: 850px; height: 550px; display: flex; justify-content: center; align-items: flex-start; margin-top: 50px; 
+}
+
+.dome-bg { position: absolute; top: -17%; left: -17%; width: 1184px; height: 684px; object-fit: contain; z-index: -2; pointer-events: none;}
+.close-png {
+    position: absolute;
+    top: 0;
+    right: 80px;
+    width: 45px;
+    cursor: pointer;
+    z-index: 10;
+    transition: transform 0.2s ease;
+}
+.close-png:hover { transform: scale(1.1); }
+
+.title-wrapper { position: absolute; top: -60px; left: 50%; transform: translateX(-50%); text-align: center; width: 450px; z-index: 10; }
+.title-blue {
+    color: #2a3a70; font-size: 1.3rem; padding: 6rem 0;
+    background-image: url('images/titelWolk.png'); background-size: cover; background-position: center;
+    margin: 0; margin-top: -6rem; font-weight: bold;
+}
+
+/* Sayfa Altındaki Ortak İkonlar */
+.bottom-avatar { position: absolute; bottom: -60px; left: 50%; transform: translateX(-50%); width: 110px; z-index: 15; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2)); }
+
+/* =========================================
+   6. VİDEO SAYFALARI (Boer ve Grutto Videoları)
+========================================= */
+.boer-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 100px; /* Videoyu başlıktan yeterince aşağı iter */
+    z-index: 5;
+}
+
+.video-container {
+    width: 580px;
+    height: 315px;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    background: #000; 
+}
+
+.video-player { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.button-row {
+    display: flex; justify-content: space-between; align-items: center;
+    width: 580px; margin-top: 25px; z-index: 10;
+}
+
+.btn-terug {
+    background: #283770; color: white; border: none; border-radius: 20px; padding: 12px 40px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.3s ease; font-family: var(--Be-Vietnam-Pro);
+}
+
+.btn-action {
+    background: #283770; color: white; border: none; border-radius: 20px; padding: 10px 25px; font-size: 1.1rem; font-weight: bold; text-align: center; cursor: pointer; transition: 0.3s ease; line-height: 1.3; font-family: var(--Be-Vietnam-Pro);
+}
+
+.btn-action.single-line { padding: 12px 40px; }
+.btn-terug:hover, .btn-action:hover { background: #1c2750; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(40, 55, 112, 0.2); }
+
+
+/* =========================================
+   7. LOKASYON BİLGİ SAYFALARI (Polderzicht, Ysbreeker, AH)
+========================================= */
+.info-layout { width: 85%; margin-top: 80px; height: 350px; display: flex; flex-direction: column; z-index: 5; }
+.centered-y { justify-content: center; }
+.intro-center { text-align: center; font-size: 0.95rem; line-height: 1.5; color: #0b1120; margin-bottom: 30px; padding: 0 20px; }
+.split-content { display: flex; justify-content: space-between; align-items: stretch; height: 100%; gap: 60px; }
+.col-left, .col-right { flex: 1; display: flex; flex-direction: column; }
+.col-divider { width: 1px; background-color: #2a3a70; margin: 0 10px; opacity: 0.3; }
+.flex-col { justify-content: flex-start; }
+.col-right h3 { color: #0b1120; margin-bottom: 15px; font-size: 1.2rem; }
+.text-center { text-align: center; }
+.margin-bot { margin-bottom: 20px; color: #2a3a70; font-size: 1.1rem; }
+
+.fit-img { width: 100%; max-height: 250px; object-fit: contain; }
+.rounded-img { width: 100%; height: 100%; max-height: 280px; object-fit: cover; border-radius: 20px; }
+.icon-text-row { display: flex; align-items: center; gap: 20px; margin-bottom: 25px; }
+.small-logo { width: 60px; object-fit: contain; }
+.small-product { width: 80px; object-fit: contain; }
+.icon-text-row p { font-size: 0.9rem; line-height: 1.4; color: #0b1120; }
+
+/* Harita Popup */
+.route-wrapper { position: relative; align-self: flex-end; margin-top: auto; }
+.map-popup { position: absolute; bottom: 130%; right: 0; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); padding: 15px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); display: flex; flex-direction: column; gap: 12px; z-index: 50; min-width: 230px; border: 2px solid white; }
+.map-popup .btn-action { width: 100%; padding: 12px; font-size: 1rem; margin: 0; }
+.close-popup { position: absolute; top: -10px; right: -10px; background: #283770; color: white; border-radius: 50%; width: 28px; height: 28px; display: flex; justify-content: center; align-items: center; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); font-size: 16px; transition: 0.2s; }
+.close-popup:hover { background: #1c2750; transform: scale(1.1); }
+
+/* =========================================
+   8. BAĞIŞ (DONEREN) SAYFASI STİLLERİ
+========================================= */
+.dome-content {     display: flex;
+    gap: 9em;
+    width: 82%;
+    padding-top: 9em;
+    z-index: 5;
+    align-items: flex-start; }
+.bio-photo { width: 180%; border-radius: 10px; margin-bottom: -1em; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+.quote { font-size: 1.05rem; line-height: 1.5; margin-bottom: 25px; font-style: italic; color: #0b1120;}
+.author { font-size: 0.95rem; line-height: 1.4; color: #0b1120;}
+.image-column { display: flex; flex-direction: column; align-items: center; width: 250px; }
+.centered-btn { background: #364883; color: white; border: none; margin-top: 3em; padding: 10px 30px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: background 0.3s; }
+.centered-btn:hover { background: #23315e; }
+
+.doneren-step { width: 79%; padding-top: 4em; padding-left: 4em; height: 100%; z-index: 5; position: absolute; top: 0; }
+.product-column { flex: 0.1; position: relative; }
+.product-img { position: absolute; width: 28em; left: -10em; bottom: -5em; z-index: 10; }
+.right-align-content { flex: 1.9; padding-left: 5em; padding-top: 10px; padding-right: 20px; font-size: 0.95rem; line-height: 1.5; color: #0b1120; }
+.right-align-content > p{ margin-bottom: 1em; }
+
+.button-group-right { display: flex; justify-content: flex-end; gap: 15px; margin-top: 30px; }
+.btn-primary { background: #2a3a70; color: white; border: none; padding: 10px 25px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: 0.3s;}
+.btn-primary:hover { background: #1c2750; transform: translateY(-2px);}
+.btn-secondary { background: transparent; color: #2a3a70; border: 2px solid #2a3a70; padding: 10px 25px; border-radius: 20px; cursor: pointer; font-weight: bold; }
+.btn-tertiary { background: #dce1eb; color: #2a3a70; border: none; padding: 10px 25px; border-radius: 20px; cursor: pointer; font-weight: bold; }
+
+.intro-text { font-size: 0.95rem; margin-bottom: 10px; color: #0b1120; line-height: 1.4; }
+.link-text { color: #2a3a70; font-size: 0.9rem; margin-bottom: 30px; }
+.link-text a { color: #2a3a70; text-decoration: none; }
+
+.tabs-container { display: flex; background: #dce1eb; border-radius: 35px; width: fit-content; margin-bottom: 30px; padding: 6px; box-shadow: inset 0 3px 6px rgba(0,0,0,0.15); gap: 5px; }
+.tab { background: transparent; color: #2a3a70; border: none; padding: 10px 30px; cursor: pointer; font-weight: bold; border-radius: 30px; transition: all 0.3s ease; }
+.tab.active { background: #2a3a70; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+
+.amount-selection { display: flex; gap: 40px; align-items: flex-end; margin-top: 40px; margin-bottom: 5px; }
+.amount-selection label { font-weight: bold; color: #2a3a70; display: block; margin-bottom: 15px; font-style: italic;}
+.preset-buttons { display: flex; gap: 10px; }
+.amount-btn { background: transparent; border: 2px solid #2a3a70; color: #2a3a70; font-weight: bold; cursor: pointer; font-size: 1.2rem; border-radius: 3em 0 3em 0; width: 80px; height: 45px; display: flex; justify-content: center; align-items: center; transition: all 0.3s ease; }
+.amount-btn:hover { background: #2a3a70; color: white; }
+.amount-btn.active { background: #2a3a70; color: white; }
+.input-wrapper { display: flex; align-items: center; border: 1px solid #ccc; border-radius: 20px; padding: 8px 15px; background: #f0f0f0; }
+.input-wrapper input { border: none; background: transparent; width: 80px; font-size: 1.1rem; outline: none; margin-left: 5px; color: #2a3a70; font-weight: bold; }
+.hover-info { font-size: 0.85rem; color: #666; margin-top: 15px; font-style: italic;}
+
+.subtitle-blue { color: #2a3a70; margin-bottom: 25px; }
+.donation-form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 90%; }
+.form-group label { display: block; font-style: italic; margin-bottom: 8px; font-size: 0.9rem; color: #000; }
+.form-group input, .form-group select { width: 100%; padding: 12px; border-radius: 20px; border: 1px solid #999; outline: none; background: transparent; }
+
+.thanks-text { font-size: 1.05rem; margin-bottom: 30px; width: 80%; color: #0b1120; }
+.share-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.share-col { display: flex; flex-direction: column; height: 100%; }
+.share-col h4 { color: #000; margin-bottom: 10px; font-size: 1.1rem; }
+.share-col p { font-size: 0.95rem; margin-bottom: 15px; color: #0b1120; line-height: 1.4; }
+.share-col .btn-primary { margin-top: auto; align-self: flex-start; }
+.social-flex { display: flex; gap: 15px; margin-bottom: 25px; align-items: center; }
+.social-icon { height: 45px; cursor: pointer; transition: transform 0.2s ease; }
+.social-icon:hover { transform: scale(1.1); }
+.qr-code { width: 7em; margin-bottom: 20px; display: block; border-radius: 10px; background: white;}
+
+.doneren-bird { position: absolute; bottom: -5%; right: -5%; width: 250px; z-index: 10; pointer-events: none; }
+.bottom-corner { position: absolute; bottom: 50px; right: 50px; }
+
+/* Overlay ve Konfeti */
+.impact-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.1); backdrop-filter: blur(1px); z-index: 9999; display: flex; justify-content: center; align-items: center; pointer-events: none; }
+.impact-modal { background: #f5f5f5; padding: 20px; border-radius: 20px; max-width: 80%; max-height: 85vh; transform: translateY(-80px); box-shadow: 0 15px 40px rgba(0,0,0,0.3); }
+.impact-modal img { max-width: 100%; max-height: 75vh; object-fit: contain; display: block; border-radius: 10px; }
+.confetti-img { position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 140%; z-index: 0; pointer-events: none; }
+#confetti-img { width: 19em; z-index: 20; }
+
+/* =========================================
+   9. PERSPEKTİF SEÇİM EKRANI (Birebir Figma Düzeni)
+========================================= */
+.landing-new {
+    position: relative; width: 100%; height: 100vh; overflow: hidden; display: flex; justify-content: center; align-items: center;
+}
+
+.perspectief-wrapper {
+    position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 750px; margin-top: 50px; 
+}
+
+.title-wrapper-pers {
+    position: absolute; top: -95px; left: 50%; transform: translateX(-50%); text-align: center; width: 550px; z-index: 20; 
+}
+.title-blue-pers {
+    color: #2a3a70; font-size: 1.3rem; padding: 6rem 0; background-image: url('images/titelWolk.png'); background-size: contain; background-position: center; background-repeat: no-repeat; margin: 0; font-weight: bold; font-family: var(--Be-Vietnam-Pro);
+}
+
+.pers-main-card {
+    background-image: url('./images/rechthoekWolk.png'); background-size: 100% 100%; background-position: center; background-repeat: no-repeat; padding: 130px 80px 80px 80px; width: 100%; min-height: 500px; text-align: left; box-sizing: border-box; display: flex; flex-direction: column;
+}
+.pers-main-card .introtekst p { font-size: 1.15rem; line-height: 1.6; color: #0b1120; margin-bottom: 20px; font-family: var(--Be-Vietnam-Pro); }
+
+.keuzes-new { display: flex; justify-content: center; gap: 40px; margin-top: auto; }
+.keuze-btn-new {
+    background-image: url('images/persBox.png'); background-size: 100% 100%; background-repeat: no-repeat; background-color: transparent; border: none; display: flex; flex-direction: column; align-items: center; text-decoration: none; color: #283770; font-weight: bold; font-size: 1.2rem; width: 180px; height: 240px; padding-top: 25px; transition: transform 0.3s ease; font-family: var(--Be-Vietnam-Pro);
+}
+
+.icon-wrapper { height: 90px; width: 100%; display: flex; justify-content: center; align-items: center; margin-bottom: 3em; }
+.icon-wrapper img { max-height: 100%; max-width: 80%; object-fit: contain; transition: 0.3s; }
+.keuze-btn-new p { margin: 0; margin-bottom: 8px; }
+
+.circle-indicator { width: 22px; height: 22px; border: 3px solid #637AB7; border-radius: 50%; background: transparent; transition: 0.3s; }
+
+.keuze-btn-new:hover { transform: translateY(-5px) scale(1.02); }
+.keuze-btn-new:hover .icon-wrapper img { transform: scale(1.1); }
+.keuze-btn-new:hover .circle-indicator { background: #637AB7; }
+
+.big-realistic-bird { position: absolute; bottom: 0%; left: 6%; width: 380px; z-index: 15; pointer-events: none; }
+
+.bg-cloud { position: absolute; pointer-events: none; }
+.top-left-cloud { top: -2%; left: -5%; width: 400px; z-index: 5; opacity: 0.8; }
+.bottom-left-cloud {     bottom: -22%;
+    left: -1%;
+    width: 550px;
+    z-index: 12; } 
+.bottom-right-cloud { bottom: -17%; right: -5%; width: 600px; z-index: 30; opacity: 0.9; }

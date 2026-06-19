@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albert Heijn</title>
+    <link rel="stylesheet" href="boerpers.css">
+</head>
+
+<body>
+    <img src="images/kaartGruttoPers.png" class="map-bg" alt="Kaart">
+
+
+    <nav class="side-navbar">
+        <div class="nav-top"><img src="images/hamburgermenu.png" class="menu-icon"></div>
+        <div class="nav-bottom">
+            <img src="images/boerPersOptie.svg" class="nav-btn">
+            <img src="images/settings.png" class="nav-btn">
+            <img src="images/info.png" class="nav-btn">
+        </div>
+    </nav>
+
+    <div class="doneer-flap">Doneer</div>
+    <img src="images/wolkAchterLogo.png" class="wolkAchterLogo">
+    <img src="images/bva-logo-blauw.png" class="logoKaart">
+
+    <section class="content-overlay">
+        <div class="dome-container">
+            <img src="images/groteWolkTextbox.png" class="dome-bg">
+            <img src="images/sluitButton.png" class="close-png" alt="Sluiten"
+                onclick="window.location.href='kaart-boer.html'">
+            <div class="title-wrapper">
+                <h2 class="title-blue">Albert Heijn van Woustraat 150</h2>
+            </div>
+
+            <div class="info-layout">
+                <div class="split-content">
+                    <div class="col-left text-center">
+                        <h3 class="margin-bot">Kijk hoe duurzaam ze zijn</h3>
+                        <img src="images/kaaswielSupermarkt.svg" class="fit-img" alt="Kaas Info">
+                    </div>
+
+                    <div class="col-divider"></div>
+
+                    <div class="col-right flex-col">
+                        <!-- <div class="icon-text-row">
+                            <img src="images/ahLogo.png" class="small-logo">
+                            <p>Door de korte keten ligt dit verkooppunt maar op een ongeveer 10 kilometer afstand van de waar de melk gemaakt is.</p>
+                        </div>
+                        
+                        <div class="icon-text-row">
+                            <img src="images/melkKaasKlein.png" class="small-product">
+                            <p>Bij dit verkooppunt is melk en kaas te koop</p>
+                        </div> -->
+                        <img src="images/infoSupermarkt.png" alt="">
+                        <div class="route-wrapper">
+
+                            <div class="map-popup" style="display: none;">
+                                <span class="close-popup" onclick="closeMapPopup(this)">&times;</span>
+                                <button class="btn-action" id="ahMap">Open Google Maps</button>
+                                <button class="btn-action" id="ahAppleMaps">Open Apple Maps</button>
+                            </div>
+
+                            <button class="btn-action" onclick="openMapPopup(this)">Ontdek route</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <img src="images/verkooppuntSolo.svg" class="bottom-avatar" alt="Winkel">
+        </div>
+    </section>
+    <script>
+        function openMapPopup(btn) {
+            // Tıklanan butonun içindeki gizli menüyü bul ve göster
+            const wrapper = btn.parentElement;
+            const popup = wrapper.querySelector('.map-popup');
+            popup.style.display = 'flex';
+        }
+
+        function closeMapPopup(closeBtn) {
+            // Çarpıya basılınca menüyü gizle
+            const popup = closeBtn.parentElement;
+            popup.style.display = 'none';
+        }
+
+        document.getElementById("ahMap").addEventListener("click", () => {
+            window.open(
+                "https://www.google.com/maps?rlz=1C5CHFA_enNL1106NL1107&gs_lcrp=EgZjaHJvbWUqFAgBEC4YDRgTGK8BGMcBGIAEGI4FMgYIABBFGDkyFAgBEC4YDRgTGK8BGMcBGIAEGI4FMgsIAhAAGA0YExiABDIKCAMQABgNGBMYHjIKCAQQABgTGBYYHjIKCAUQABgTGBYYHjIKCAYQABgTGBYYHjIKCAcQABgTGBYYHjIKCAgQABgTGBYYHtIBCDQ5MDZqMGo3qAIAsAIA&um=1&ie=UTF-8&fb=1&gl=nl&sa=X&geocode=KedR-QaPCcZHMdoDRsFQx5fa&daddr=Van+Woustraat+150,+1073+LV+Amsterdam",
+                "_blank"
+            );
+        });
+
+        document.getElementById("ahAppleMaps").addEventListener("click", () => {
+            window.open(
+                "https://maps.apple.com/directions?destination=Albert+Heijn%2C+Van+Woustraat+150%2C+1073+LV+Amsterdam%2C+Nederland&destination-place-id=IAAC0780AF391C9B&mode=driving", "_blank"
+            );
+        });
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doneer als Bedrijf - Boeren van Amstel</title>
+    <link class="styles" rel="stylesheet" href="style-donatie.css">
+</head>
+
+<body class="wave-bg-donation">
+
+    <header class="main-header">
+        <div class="header-container">
+            <a href="index.html" class="header-logo">
+                <img src="images/Boeren van Amstel_Logo.svg" alt="Boeren van Amstel">
+            </a>
+
+            <nav class="header-nav">
+                <a href="kaart-tutorial.html" class="nav-link">Ontdek Amstelgebied op de kaart</a>
+                <a href="index.html" class="nav-link">Onze maatregelen</a>
+                <a href="direct-donatie.html" class="nav-link btn-cta">Doe mee!</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content-flow">
+        <h1 class="flow-title">Doneer en draag bij aan natuurherstel als bedrijf</h1>
+
+        <div class="promo-header-zone company-height-equalizer">
+            <p class="promo-text-bubble">Verschijn op ons top donateuren bord!</p>
+        </div>
+
+        <div class="base-flow-card">
+            <!-- De action stuurt de gebruiker nu door naar het feedbackscherm -->
+            <form action="feedbackscherm.html" method="POST">
+
+                <div class="flow-row">
+                    <label class="flow-label">Doneer als</label>
+                    <div class="toggle-switch-container">
+                        <button type="button" class="btn-toggle"
+                            onclick="location.href='particulierdoneren.html'">Particulier</button>
+                        <button type="button" class="btn-toggle active"
+                            onclick="location.href='betaalscherm-bedrijf.html'">Bedrijf</button>
+                    </div>
+                </div>
+
+                <div class="time-frequency-bar">
+                    <button type="button" class="btn-time active">Eenmalig</button>
+                    <button type="button" class="btn-time">Maandelijks</button>
+                    <button type="button" class="btn-time">Jaarlijks</button>
+                </div>
+
+                <div class="company-amount-block">
+                    <label class="flow-label">Vul zelf een bedrag in</label>
+                    <div class="currency-input-wrapper company-field-width">
+                        <span class="currency-sign">€</span>
+                        <input type="number" class="flow-field-input" placeholder="0,00">
+                    </div>
+                </div>
+
+                <div class="form-grid-split input-fields-margin">
+                    <div class="input-element-cell">
+                        <label>Bedrijfsnaam</label>
+                        <input type="text" class="flow-field-input">
+                    </div>
+                    <div class="input-element-cell">
+                        <label>E-mailadres</label>
+                        <input type="email" class="flow-field-input">
+                    </div>
+                </div>
+
+                <p class="company-invoice-notice">Er wordt een factuur naar uw e-mail gestuurd</p>
+
+                <div class="flow-buttons">
+                   
+                        <a href="direct-donatie.html" class="btn-back-flow">Terug</a>
+      
+                        <button type="submit" class="btn-submit-flow">Doneer</button>
+  
+                </div>
+            </form>
+
+        </div>
+
+
+    </main>
+
+</body>
+
+</html>

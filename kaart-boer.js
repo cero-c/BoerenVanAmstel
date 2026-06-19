@@ -69,8 +69,14 @@ const markers = [
     { x: 0.5, y: 0.28, type: "horeca" },
     { x: 0.55, y: 0.33, type: "horeca" },
 
-
 ];
+
+const pageLinks = {
+    boerderij: "boerderij.html",
+    horeca: "horeca.html",
+    verkooppunt: "verkooppunt.html",
+    vogel: "weidevogelgebied1.html"
+};
 
 let scale = 1;
 let targetScale = 1;
@@ -89,6 +95,35 @@ const filters = {
     verkooppunt: true,
     horeca: true
 };
+
+const urlParams = new URLSearchParams(window.location.search);
+const selectedFilters = urlParams.get("filter");
+
+if (selectedFilters) {
+
+    filters.boerderij = false;
+    filters.vogel = false;
+    filters.verkooppunt = false;
+    filters.horeca = false;
+
+    const activeFilters = selectedFilters.split(",");
+
+    if (activeFilters.includes("boerderij")) {
+        filters.boerderij = true;
+    }
+
+    if (activeFilters.includes("vogel")) {
+        filters.vogel = true;
+    }
+
+    if (activeFilters.includes("verkooppunt")) {
+        filters.verkooppunt = true;
+    }
+
+    if (activeFilters.includes("horeca")) {
+        filters.horeca = true;
+    }
+}
 
 
 function resizeCanvas() {
@@ -319,31 +354,31 @@ canvas.addEventListener("mousemove", function (event) {
     canvas.style.cursor = hoveredMarker ? "pointer" : "grab";
 });
 
+
 canvas.addEventListener("click", function (event) {
-    const clickX = event.clientX;
-    const clickY = event.clientY;
+    const rect = canvas.getBoundingClientRect();
+    const clickX = event.clientX - rect.left;
+    const clickY = event.clientY - rect.top;
 
     markers.forEach(marker => {
-        if (!marker.featured) return;
         if (!filters[marker.type]) return;
-
-        const baseScale = getBaseScale();
-        const markerScale = scale / baseScale;
-
-        const backgroundSize = 180 * markerScale;
 
         const x = offsetX + marker.x * mapImage.width * scale;
         const y = offsetY + marker.y * mapImage.height * scale;
 
-        const bubbleY = y - 20 * markerScale;
+        const markerSize = 40 * (scale / getBaseScale());
 
-        if (
-            clickX >= x - backgroundSize / 2 &&
-            clickX <= x + backgroundSize / 2 &&
-            clickY >= bubbleY - backgroundSize / 2 &&
-            clickY <= bubbleY + backgroundSize / 2
-        ) {
-            window.location.href = marker.link;
+        const distance = Math.sqrt(
+            (clickX - x) ** 2 +
+            (clickY - y) ** 2
+        );
+
+        if (distance < markerSize) {
+            const link = pageLinks[marker.type];
+
+            if (link) {
+                window.location.href = link;
+            }
         }
     });
 });
@@ -392,6 +427,23 @@ const filterBoerderijen = document.querySelector("#filterBoerderijen");
 const filterWeidevogels = document.querySelector("#filterWeidevogels");
 const filterVerkooppunten = document.querySelector("#filterVerkooppunten");
 const filterHoreca = document.querySelector('#filterHoreca');
+
+
+if (filterBoerderijen) {
+    filterBoerderijen.checked = filters.boerderij;
+}
+
+if (filterWeidevogels) {
+    filterWeidevogels.checked = filters.vogel;
+}
+
+if (filterVerkooppunten) {
+    filterVerkooppunten.checked = filters.verkooppunt;
+}
+
+if (filterHoreca) {
+    filterHoreca.checked = filters.horeca;
+}
 
 if (filterVerkooppunten) {
     filterVerkooppunten.addEventListener("change", function () {

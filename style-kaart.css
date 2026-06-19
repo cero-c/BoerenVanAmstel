@@ -76,21 +76,31 @@ header {
     height: auto;
 }
 
+canvas {
+    position: relative;
+    z-index: 1;
+}
+
+header {
+    position: relative;
+    z-index: 100;
+}
+
+
 .wolkAchterLogo {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 18rem;
-    z-index: 19;
-    pointer-events: none;
+    position: absolute;
+    z-index: 15;
+    top: -7rem;
+    left: 85%;
+    width: 300px;
 }
 
 .logoKaart {
-    position: fixed;
+    position: absolute;
+    z-index: 15;
+    width: 120px;
     top: 1rem;
-    right: 1.5rem;
-    width: 10rem;
-    z-index: 20;
+    left: 90%;
 }
 
 .menu-icon:hover,
@@ -428,4 +438,36 @@ header {
 .switchText {
     color: var(--color-error);
     font-weight: 500;
+}
+
+.doneer-flap {
+    position: fixed;
+    right: 0;
+    bottom: 25%;
+
+    background: #F1B565;
+    color: var(--color-blue-dark);
+
+    padding: 25px 10px;
+    border-radius: 0 1rem 1rem 0;
+
+    font-family: var(--Be-Vietnam-Pro);
+    font-weight: bold;
+    font-size: 1.1rem;
+
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+
+    cursor: pointer;
+    z-index: 9999;
+
+    text-decoration: none;
+    box-shadow: -3px 0 10px rgba(0, 0, 0, 0.1);
+
+    transition: all 0.2s ease;
+}
+
+.doneer-flap:hover {
+    background: #e7aa57;
+    transform: rotate(180deg) translateX(3px);
 }

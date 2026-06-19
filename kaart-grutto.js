@@ -29,7 +29,7 @@ if (canvas && ctx) {
             type: "boerderij",
             featured: true,
             text: "Klik op mij en ontdek het verhaal van de boeren!",
-            link: "index.html",
+            link: "bgrutto1.html",
             hoverScale: 1
         },
         {
@@ -38,7 +38,7 @@ if (canvas && ctx) {
             type: "vogel",
             featured: true,
             text: "Klik op mij en ontdek de weidevogelgebieden!",
-            link: "index.html",
+            link: "weidevogelgebied1.html",
             hoverScale: 1
         },
 
@@ -299,31 +299,43 @@ if (canvas && ctx) {
         canvas.style.cursor = hoveredMarker ? "pointer" : "grab";
     });
 
+    const pageLinks = {
+        boerderij: "bgrutto1.html",
+        vogel: "weidevogelgebied1.html"
+    };
+
     canvas.addEventListener("click", function (event) {
         const clickX = event.clientX;
         const clickY = event.clientY;
 
         markers.forEach(marker => {
-            if (!marker.featured) return;
             if (!filters[marker.type]) return;
 
             const baseScale = getBaseScale();
             const markerScale = scale / baseScale;
 
-            const backgroundSize = 180 * markerScale;
-
             const x = offsetX + marker.x * mapImage.width * scale;
             const y = offsetY + marker.y * mapImage.height * scale;
 
-            const bubbleY = y - 20 * markerScale;
+            const hitSize = marker.featured
+                ? 180 * markerScale
+                : 70 * markerScale;
+
+            const hitY = marker.featured
+                ? y - 20 * markerScale
+                : y - 8 * markerScale;
 
             if (
-                clickX >= x - backgroundSize / 2 &&
-                clickX <= x + backgroundSize / 2 &&
-                clickY >= bubbleY - backgroundSize / 2 &&
-                clickY <= bubbleY + backgroundSize / 2
+                clickX >= x - hitSize / 2 &&
+                clickX <= x + hitSize / 2 &&
+                clickY >= hitY - hitSize / 2 &&
+                clickY <= hitY + hitSize / 2
             ) {
-                window.location.href = marker.link;
+                const link = marker.link || pageLinks[marker.type];
+
+                if (link) {
+                    window.location.href = link;
+                }
             }
         });
     });
@@ -348,6 +360,7 @@ if (canvas && ctx) {
 
 
 }
+
 
 
 
@@ -547,6 +560,7 @@ function showTutorial() {
     updateStep(1);
 }
 
+
 function updateStep(step) {
     currentStep = step;
 
@@ -560,7 +574,7 @@ function updateStep(step) {
     const step3Markers = document.getElementById('step3-markers');
     const btnTerugSmall = document.getElementById('btn-terug-small');
 
-    if (!title) return;
+    if (!title) return; 
 
     if (step === 1) {
         title.style.display = 'block';
@@ -571,10 +585,9 @@ function updateStep(step) {
         stepInd.innerText = "1/3";
         btnLeft.innerText = "Skip";
         btnRight.innerText = "Verder";
-        if (markersContainer) markersContainer.style.display = 'none';
-        if (btnTerugSmall) btnTerugSmall.style.display = 'none';
+        markersContainer.style.display = 'none';
+        btnTerugSmall.style.display = 'none';
     }
-
     else if (step === 2) {
         title.style.display = 'block';
         title.innerHTML = "Klik op een <strong>marker</strong> om <strong>verhalen, locaties</strong> en bijzondere <strong>plekken</strong> te ontdekken.";
@@ -583,11 +596,10 @@ function updateStep(step) {
         stepInd.innerText = "2/3";
         btnLeft.innerText = "Terug";
         btnRight.innerText = "Verder";
-        if (markersContainer) markersContainer.style.display = 'block';
+        markersContainer.style.display = 'block';
         if (step3Markers) step3Markers.style.display = 'none';
-        if (btnTerugSmall) btnTerugSmall.style.display = 'none';
+        btnTerugSmall.style.display = 'none';
     }
-
     else if (step === 3) {
         title.style.display = 'none';
         text1.innerHTML = "Ben je klaar? Dan laat ik je graag mijn landschap zien. <strong>Klik op de rechterknop</strong> en ontdek Amstelland.";
@@ -596,8 +608,16 @@ function updateStep(step) {
         stepInd.innerText = "3/3";
         btnLeft.innerText = "Draag bij aan natuurherstel";
         btnRight.innerText = "Ontdek het Amstelgebied";
-        if (markersContainer) markersContainer.style.display = 'block';
+
+        btnLeft.onclick = () => {
+            window.location.href = "bijdrage.html";
+        };
+
+        btnRight.onclick = () => {
+            window.location.href = "perspectief.html";
+        };
+        markersContainer.style.display = 'block';
         if (step3Markers) step3Markers.style.display = 'block';
-        if (btnTerugSmall) btnTerugSmall.style.display = 'block';
+        btnTerugSmall.style.display = 'block';
     }
 }
