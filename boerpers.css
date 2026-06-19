@@ -57,7 +57,11 @@ body, html {
 
 /* Harita Üzerindeki İkonlar ve Logo */
 
-.wolkAchterLogo { position: absolute; z-index: 15; top: -13%; left: 85%; width: 250px;}
+.wolkAchterLogo { position: absolute;
+    z-index: 15;
+    top: -12%;
+    left: 85%;
+    width: 300px;}
 .logoKaart { position: absolute; z-index: 15; width: 120px; top: 3%; left: 90%; }
 
 /* Sağ Kenardaki Turuncu Doneer Kulakçığı */
