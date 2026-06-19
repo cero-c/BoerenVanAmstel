@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Albert Heijn</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="boerpers.css">
 </head>
 <body>
     <img src="images/kaartGruttoPers.png" class="map-bg" alt="Kaart">
-    <img src="images/boerIcoontje.svg" class="boer-icon" alt="Boer">
+
     
     <nav class="side-navbar">
         <div class="nav-top"><img src="images/hamburgermenu.png" class="menu-icon"></div>
@@ -52,7 +52,17 @@
                             <p>Bij dit verkooppunt is melk en kaas te koop</p>
                         </div> -->
                         <img src="images/infoSupermarkt.png" alt="">
-                        <button class="btn-action align-bottom-right">Ontdek route</button>
+                        <div class="route-wrapper">
+                            
+                            <div class="map-popup" style="display: none;">
+                                <span class="close-popup" onclick="closeMapPopup(this)">&times;</span>
+                                <button class="btn-action">Open Google Maps</button>
+                                <button class="btn-action">Open Apple Maps</button>
+                            </div>
+
+                            <button class="btn-action" onclick="openMapPopup(this)">Ontdek route</button>
+                            
+                        </div>
                     </div>
                 </div>
             </div>
@@ -60,5 +70,19 @@
             <img src="images/verkooppuntSolo.svg" class="bottom-avatar" alt="Winkel">
         </div>
     </section>
+    <script>
+        function openMapPopup(btn) {
+            // Tıklanan butonun içindeki gizli menüyü bul ve göster
+            const wrapper = btn.parentElement;
+            const popup = wrapper.querySelector('.map-popup');
+            popup.style.display = 'flex';
+        }
+
+        function closeMapPopup(closeBtn) {
+            // Çarpıya basılınca menüyü gizle
+            const popup = closeBtn.parentElement;
+            popup.style.display = 'none';
+        }
+    </script>
 </body>
 </html>

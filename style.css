@@ -947,7 +947,7 @@ body, html {
 
 .info-layout {
     width: 85%;
-    margin-top: 60px; /* Başlıktan aşağı iter */
+    margin-top: 7em; /* Başlıktan aşağı iter */
     display: flex;
     flex-direction: column;
     z-index: 5;
@@ -973,6 +973,7 @@ body, html {
     justify-content: space-between;
     align-items: stretch; /* Sütun boylarını eşitler */
     height: 100%;
+    gap: 50px;
 }
 
 .col-left, .col-right {
@@ -1044,3 +1045,4 @@ body, html {
     z-index: 15;
     filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2)); /* Şık bir gölge */
 }
+
